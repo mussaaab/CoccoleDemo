@@ -1,44 +1,69 @@
-import React, { Component } from 'react'
-import { Text, View, Image, Dimensions, StyleSheet, ActivityIndicator } from 'react-native'
+import React, { Component } from 'react';
+import {
+  Text,
+  View,
+  Image,
+  Dimensions,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
+import { CommonActions } from '@react-navigation/native';
 import { Images, Colors } from '../Config';
 
-const { width, height } = Dimensions.get('window')
+const { width, height } = Dimensions.get('window');
 
 export class SplashLoading extends Component {
-    render() {
+  componentDidMount() {
+    // Some API here then navigate to either Home or Register screen
 
-        return (
-            <View style={styles.MainView}>
-                <Image source={Images.Pamper_logo} style={styles.logo} />
+    setTimeout(() => {
+      this.props.navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [
+            {
+              name: 'RegisterOrLogin',
+            },
+          ],
+        }),
+      );
+    }, 3000);
+    
+  }
 
-                <Text style={styles.text}>Con amore si cambia</Text>
+  render() {
+    return (
+      <View style={styles.MainView}>
+        <Image source={Images.Pamper_logo} style={styles.logo} />
 
-                <View style={styles.loadingView}>
-                    <ActivityIndicator size="small" color="#8e51a5" />
-                </View>
-            </View>
-        )
-    }
+        <Text style={styles.text}>Con amore si cambia</Text>
+
+        <View style={styles.loadingView}>
+          <ActivityIndicator size="small" color="#8e51a5" />
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    MainView: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    logo: {
-        width: width * 0.5,
-        height: height * 0.1,
-        resizeMode: 'contain'
-    },
-    text: {
-        fontSize: 16,
-        color: Colors.deep_sea_green
-    },
-    loadingView: {
-        marginVertical: 15
-    }
-})
+  MainView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    width: width * 0.5,
+    height: height * 0.1,
+    resizeMode: 'contain',
+  },
+  text: {
+    fontSize: 16,
+    color: Colors.deep_sea_green,
+  },
+  loadingView: {
+    marginVertical: 15,
+  },
+});
 
-export default SplashLoading
+export default SplashLoading;
