@@ -1,22 +1,16 @@
 import React from 'react';
-import {
-  View
-} from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import AppNavigation from './AppNavigation'
+import AppNavigation from './AppNavigation';
 import { SplashLoading } from './src/Screens';
-
-
 
 const App = () => {
   return (
-    <NavigationContainer style={{ flex: 1 }}>
-      {/* <SplashLoading /> */}
+    <NavigationContainer>
+      <StatusBar translucent={true} backgroundColor="transparent" />
       <AppNavigation />
-
     </NavigationContainer>
   );
 };
-
 
 export default App;
