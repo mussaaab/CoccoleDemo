@@ -8,7 +8,7 @@ import { Colors } from '../Config';
 
 const { width, height } = Dimensions.get('window');
 
-export default ProgressBar = ({ value }) => {
+export default ProgressBar = ({ value, color, heartColor }) => {
   return (
     <View
       style={{
@@ -33,10 +33,10 @@ export default ProgressBar = ({ value }) => {
           borderRadius: 100,
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: Colors.sky_blue,
+          backgroundColor: color,
         }}
       >
-        <Entypo name="heart-outlined" size={20} color={Colors.deep_sea_green} />
+        <Entypo name="heart-outlined" size={20} color={heartColor} />
       </TouchableOpacity>
     </View>
   );

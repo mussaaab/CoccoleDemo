@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { Header, ProgressBar } from '../../Components';
-// import { Header } from '../../Components';
 import { Images, Colors } from '../../Config';
 import { Months } from '../../Config/Api';
 
@@ -22,7 +21,7 @@ export class SelectDateOfBirth extends Component {
   };
   render() {
     let date = this.state.date?.split('-');
-    date && console.warn(date[1]);
+    
     return (
       <View style={{ flex: 1, backgroundColor: Colors.white }}>
         <Header navigation={this.props.navigation} />
@@ -33,7 +32,7 @@ export class SelectDateOfBirth extends Component {
             alignSelf: 'center',
           }}
         >
-          <ProgressBar value={0.25} />
+          <ProgressBar value={0.25} color={Colors.sky_blue} heartColor={Colors.black} />
         </View>
 
         <View style={{ flex: 1 }}>
@@ -110,7 +109,8 @@ export class SelectDateOfBirth extends Component {
           }}
         >
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('')}
+            onPress={() => this.props.navigation.navigate('EnterPersonalDetail')}
+            disabled={!this.state.date}
             style={{
               width: width * 0.8,
               alignSelf: 'center',
@@ -121,7 +121,7 @@ export class SelectDateOfBirth extends Component {
               borderColor: Colors.grey,
               borderRadius: 100,
               paddingVertical: 15,
-              marginTop: 15,
+              margin: 15,
             }}
           >
             <Text
