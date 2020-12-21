@@ -2,12 +2,13 @@ import React from 'react';
 import { View, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavigation from './AppNavigation';
-import { SplashLoading } from './src/Screens';
+import { Colors } from './src/Config';
+
 
 const App = () => {
   return (
     <NavigationContainer>
-      <StatusBar translucent={true} backgroundColor="transparent" />
+      <StatusBar backgroundColor={Colors.fountain_blue} />
       <AppNavigation />
     </NavigationContainer>
   );
