@@ -5,7 +5,7 @@ import {
   Dimensions,
   TouchableOpacity,
   Image,
-  TextInput,
+  StyleSheet,
   ScrollView,
 } from 'react-native';
 import { RadioButton } from 'react-native-paper';
@@ -28,12 +28,8 @@ export class JoinFamily extends Component {
       <View style={{ flex: 1, backgroundColor: Colors.white }}>
         <Header navigation={this.props.navigation} />
 
-        <View
-          style={{
-            width: width * 0.9,
-            alignSelf: 'center',
-          }}
-        >
+        <View style={styles.progressBarView}>
+
           <ProgressBar
             value={1}
             color={Colors.fountain_blue}
@@ -42,16 +38,9 @@ export class JoinFamily extends Component {
         </View>
 
         <ScrollView>
-          <View
-            style={{
-              width: width * 0.8,
-              alignSelf: 'center',
-              paddingVertical: 5,
-            }}
-          >
-            <Text
-              style={{ fontSize: 20, textAlign: 'center', fontWeight: 'bold' }}
-            >
+          <View style={styles.titleView}>
+
+            <Text style={styles.title}>
               Unisciti alla famiglia!
             </Text>
           </View>
@@ -59,54 +48,34 @@ export class JoinFamily extends Component {
           <View style={{ width: width * 0.9, alignSelf: 'center' }}>
             <Image
               source={Images.family_img}
-              style={{
-                width: height * 0.45,
-                height: height * 0.35,
-                resizeMode: 'contain',
-              }}
+              style={styles.image}
             />
           </View>
 
-          <View
-            style={{
-              width: width * 0.8,
-              alignSelf: 'center',
-              paddingVertical: 5,
-            }}
-          >
-            <Text
-              style={{ fontSize: 20, textAlign: 'center', fontWeight: 'bold' }}
-            >
+          <View style={styles.titleView}>
+
+            <Text style={[styles.title, { fontSize: 16 }]}>
               Resta aggiornato sul mondo Hero Solo, Lines, Specialist, Ace
             </Text>
+
           </View>
 
-          <View
-            style={{
-              width: width * 0.9,
-              alignSelf: 'center',
-              paddingVertical: 5,
-            }}
-          >
+          <View style={styles.detailTextView}>
+
             <Text style={{ textAlign: 'center' }}>
               Scegli di ricevere informazioni su prodotti, novità e iniziative
               Pampers e permettici di svolgere ricerche di mercato, come da{' '}
+
               <Text style={{ fontWeight: 'bold', color: Colors.fountain_blue }}>
                 informativa privacy
               </Text>
+
               . In qualsiasi momento potrai modificare la tua preferenza.
             </Text>
           </View>
 
-          <View
-            style={{
-              width: width * 0.8,
-              alignSelf: 'center',
-              paddingVertical: 15,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}
-          >
+          <View style={styles.radioBtnView}>
+
             <TouchableOpacity
               onPress={() =>
                 this.setState({
@@ -194,35 +163,26 @@ export class JoinFamily extends Component {
             </TouchableOpacity>
           </View>
 
-          <View
-            style={{
-              width: width * 0.8,
-              alignSelf: 'center',
-              paddingVertical: 5,
-            }}
-          >
-            <Text
-              style={{ fontSize: 20, textAlign: 'center', fontWeight: 'bold' }}
-            >
+          <View style={[styles.titleView, { width: width * 0.85 }]}>
+
+            <Text style={[styles.title, { fontSize: 16 }]}>
               Vivi il tuo viaggio personalizzato con Pampers
             </Text>
+
           </View>
 
-          <View
-            style={{
-              width: width * 0.9,
-              alignSelf: 'center',
-              paddingVertical: 5,
-            }}
-          >
+          <View style={styles.detailTextView}>
+
             <Text style={{ textAlign: 'center' }}>
               Per noi è importante conoscere i tuoi interessi. In questo modo
               potremmo fornirti prodotti e servizi sulla base delle tue
               preferenze e inviarti comunicazioni e promozioni in linea con il
               tuo profilo sia in app che in altri contesti web, come da{' '}
+
               <Text style={{ fontWeight: 'bold', color: Colors.fountain_blue }}>
                 informativa privacy
               </Text>
+
               . In qualsiasi momento potrai modificare la tua preferenza.
             </Text>
           </View>
@@ -333,14 +293,8 @@ export class JoinFamily extends Component {
             </TouchableOpacity>
           </View>
 
-          <View
-            style={{
-              width: width * 0.9,
-              alignSelf: 'center',
-              paddingVertical: 5,
-              alignItems: 'center',
-            }}
-          >
+          <View style={styles.policyView}>
+
             <Text style={{ textAlign: 'center', fontSize: 12 }}>
               Cliccando su “Registrati” confermo di essere maggiorenne, di aver
               letto{' '}
@@ -350,7 +304,6 @@ export class JoinFamily extends Component {
               </Text>
               , accetto il{' '}
               <Text style={{ fontWeight: 'bold', color: Colors.fountain_blue }}>
-                {' '}
                 regolamento del Club Pampers{' '}
               </Text>{' '}
               e i{' '}
@@ -378,20 +331,61 @@ export class JoinFamily extends Component {
               margin: 10,
             }}
           >
-            <Text
-              style={{
-                textAlign: 'center',
-                color: Colors.white,
-                fontWeight: 'bold',
-              }}
-            >
+
+            <Text style={styles.procediText}>
               Procedi
             </Text>
+            
           </TouchableOpacity>
         </ScrollView>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  progressBarView: {
+    width: width * 0.9,
+    alignSelf: 'center',
+  },
+  titleView: {
+    width: width * 0.8,
+    alignSelf: 'center',
+    paddingVertical: 5,
+  },
+  title: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontWeight: 'bold'
+  },
+  image: {
+    width: height * 0.45,
+    height: height * 0.35,
+    resizeMode: 'contain',
+  },
+  detailTextView: {
+    width: width * 0.9,
+    alignSelf: 'center',
+    paddingVertical: 5,
+  },
+  radioBtnView: {
+    width: width * 0.8,
+    alignSelf: 'center',
+    paddingVertical: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  procediText: {
+    textAlign: 'center',
+    color: Colors.white,
+    fontWeight: 'bold',
+  },
+  policyView: {
+    width: width * 0.9,
+    alignSelf: 'center',
+    paddingVertical: 5,
+    alignItems: 'center',
+  }
+})
 
 export default JoinFamily;

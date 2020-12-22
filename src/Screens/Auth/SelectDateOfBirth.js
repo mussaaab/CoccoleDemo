@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   Modal,
+  StyleSheet
 } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { Header, ProgressBar } from '../../Components';
@@ -26,12 +27,7 @@ export class SelectDateOfBirth extends Component {
       <View style={{ flex: 1, backgroundColor: Colors.white }}>
         <Header navigation={this.props.navigation} />
 
-        <View
-          style={{
-            width: width * 0.9,
-            alignSelf: 'center',
-          }}
-        >
+        <View style={styles.progressBarView}>
           <ProgressBar
             value={0.25}
             color={Colors.sky_blue}
@@ -40,33 +36,18 @@ export class SelectDateOfBirth extends Component {
         </View>
 
         <View style={{ flex: 1 }}>
-          <View
-            style={{
-              width: width * 0.8,
-              alignSelf: 'center',
-              paddingVertical: 15,
-            }}
-          >
+
+          <View style={styles.titleView}>
             <Text
-              style={{ fontSize: 20, textAlign: 'center', fontWeight: 'bold' }}
+              style={styles.title}
             >
               Inserisci la data di nascita del tuo bimbo più piccolo o presunta
               data del parto
             </Text>
           </View>
 
-          <View
-            style={{
-              width: width * 0.8,
-              borderWidth: 1,
-              borderColor: Colors.grey,
-              borderRadius: 100,
-              alignSelf: 'center',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              paddingVertical: 15,
-            }}
-          >
+          <View style={styles.selectDateView}>
+
             <Text style={{ paddingLeft: 15, color: Colors.silver }}>
               {!this.state.date
                 ? 'Inserisci la data di nascita'
@@ -79,39 +60,24 @@ export class SelectDateOfBirth extends Component {
                   calendar_modal: true,
                 })
               }
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginHorizontal: 15,
-              }}
-            >
-              <Image
-                source={Images.calendar}
-                style={{
-                  width: height * 0.03,
-                  height: height * 0.03,
-                  resizeMode: 'contain',
-                }}
-              />
+              style={styles.calenderBtn}>
+
+              <Image source={Images.calendar} style={styles.calendarImg}/>
+
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity
-            style={{ width: width * 0.7, marginTop: 20, alignSelf: 'center' }}
-          >
+          <TouchableOpacity style={styles.textBtn}>
+
             <Text style={{ color: Colors.Blue_Chill }}>
               Non conosci la data presunta del parto?
             </Text>
+
           </TouchableOpacity>
         </View>
 
-        <View
-          style={{
-            marginHorizontal: 15,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
+        <View style={styles.footerView}>
+
           <TouchableOpacity
             onPress={() =>
               this.props.navigation.navigate('EnterPersonalDetail')
@@ -130,15 +96,10 @@ export class SelectDateOfBirth extends Component {
               margin: 15,
             }}
           >
-            <Text
-              style={{
-                textAlign: 'center',
-                color: Colors.white,
-                fontWeight: 'bold',
-              }}
-            >
+            <Text style={styles.procediText}>
               Procedi
             </Text>
+
           </TouchableOpacity>
         </View>
 
@@ -146,18 +107,10 @@ export class SelectDateOfBirth extends Component {
         <Modal visible={this.state.calendar_modal} transparent={true}>
           <View
             onTouchEnd={() => this.setState({ calendar_modal: false })}
-            style={{
-              flex: 1,
-              backgroundColor: 'rgba(232, 232, 232,0.7)',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+            style={styles.calendarModalView}
           >
-            <View
-              style={{
-                width: width * 0.9,
-              }}
-            >
+            <View style={{ width: width * 0.9}}>
+              
               <Calendar
                 theme={{
                   backgroundColor: '#ffffff',
@@ -203,5 +156,65 @@ export class SelectDateOfBirth extends Component {
     );
   }
 }
+
+
+const styles = StyleSheet.create({
+  progressBarView: {
+    width: width * 0.9,
+    alignSelf: 'center',
+  },
+  titleView: {
+    width: width * 0.8,
+    alignSelf: 'center',
+    paddingVertical: 15,
+  },
+  title: { 
+    fontSize: 20, 
+    textAlign: 'center', 
+    fontWeight: 'bold' 
+  },
+  selectDateView: {
+    width: width * 0.8,
+    borderWidth: 1,
+    borderColor: Colors.grey,
+    borderRadius: 100,
+    alignSelf: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 15,
+  },
+  calenderBtn: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 15,
+  },
+  calendarImg: {
+    width: height * 0.03,
+    height: height * 0.03,
+    resizeMode: 'contain',
+  },
+  textBtn: { 
+    width: width * 0.9, 
+    marginTop: 20, 
+    alignSelf: 'center' ,
+    alignItems: 'center'
+  },
+  footerView: {
+    marginHorizontal: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  procediText: {
+    textAlign: 'center',
+    color: Colors.white,
+    fontWeight: 'bold',
+  },
+  calendarModalView: {
+    flex: 1,
+    backgroundColor: 'rgba(232, 232, 232,0.7)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+})
 
 export default SelectDateOfBirth;

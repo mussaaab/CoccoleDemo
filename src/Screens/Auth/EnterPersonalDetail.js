@@ -6,7 +6,8 @@ import {
     TouchableOpacity,
     Image,
     TextInput,
-    ScrollView
+    ScrollView,
+    StyleSheet
 } from 'react-native'
 import { Header, ProgressBar } from '../../Components';
 import { Colors } from '../../Config';
@@ -27,39 +28,22 @@ export class EnterPersonalDetail extends Component {
             <View style={{ flex: 1, backgroundColor: Colors.white }}>
                 <Header navigation={this.props.navigation} />
 
-                <View
-                    style={{
-                        width: width * 0.9,
-                        alignSelf: 'center',
-                    }}
-                >
+                <View style={styles.progressBarView}>
                     <ProgressBar value={0.5} color={Colors.sky_blue} heartColor={Colors.black} />
                 </View>
 
                 <View style={{ flex: 1 }}>
                     <ScrollView>
-                        <View
-                            style={{
-                                width: width * 0.8,
-                                alignSelf: 'center',
-                                paddingVertical: 10,
-                            }}>
-                            <Text
-                                style={{ fontSize: 20, textAlign: 'center', fontWeight: 'bold' }}>
+
+                        <View style={styles.titleView}>
+                            <Text style={styles.title}>
                                 Inserisci i tuoi dati personali
-                        </Text>
+                            </Text>
                         </View>
 
-                        <View
-                            style={{
-                                width: width * 0.8,
-                                alignSelf: 'center',
-                                paddingVertical: 10,
-                                marginTop: 15,
-                            }}>
+                        <View style={styles.inputView}>
 
-                            <Text
-                                style={{ fontSize: 18, fontWeight: 'bold', color: '#354953' }}>
+                            <Text style={styles.inputTitle}>
                                 Name
                             </Text>
 
@@ -67,26 +51,11 @@ export class EnterPersonalDetail extends Component {
                                 placeholder="Inserisci il tuo nome"
                                 placeholderTextColor={Colors.silver}
                                 onChangeText={(name) => this.setState({ name })}
-                                style={{
-                                    width: width * 0.8,
-                                    alignSelf: 'center',
-                                    marginTop: 10,
-                                    borderRadius: 100,
-                                    paddingLeft: 20,
-                                    borderWidth: 1,
-                                    borderColor: Colors.grey,
-                                    color: Colors.silver,
-                                }}
+                                style={styles.input}
                             />
                         </View>
 
-                        <View
-                            style={{
-                                width: width * 0.8,
-                                alignSelf: 'center',
-                                paddingVertical: 10,
-                                marginTop: 5,
-                            }}>
+                        <View style={[styles.inputView, { marginTop: 5 }]}>
 
                             <Text
                                 style={{ fontSize: 18, fontWeight: 'bold', color: '#354953' }}>
@@ -97,29 +66,13 @@ export class EnterPersonalDetail extends Component {
                                 placeholder="Inserisci il tuo cognome"
                                 placeholderTextColor={Colors.silver}
                                 onChangeText={(Cognome) => this.setState({ Cognome })}
-                                style={{
-                                    width: width * 0.8,
-                                    alignSelf: 'center',
-                                    marginTop: 10,
-                                    borderRadius: 100,
-                                    paddingLeft: 20,
-                                    borderWidth: 1,
-                                    borderColor: Colors.grey,
-                                    color: Colors.silver,
-                                }}
+                                style={styles.input}
                             />
                         </View>
 
-                        <View
-                            style={{
-                                width: width * 0.8,
-                                alignSelf: 'center',
-                                paddingVertical: 10,
-                                marginTop: 5,
-                            }}>
+                        <View style={[styles.inputView, { marginTop: 5 }]}>
 
-                            <Text
-                                style={{ fontSize: 18, fontWeight: 'bold', color: '#354953' }}>
+                            <Text style={styles.inputTitle}>
                                 CAP
                             </Text>
 
@@ -127,32 +80,16 @@ export class EnterPersonalDetail extends Component {
                                 placeholder="Inserisci il tuo CAP"
                                 placeholderTextColor={Colors.silver}
                                 onChangeText={(cap) => this.setState({ cap })}
-                                style={{
-                                    width: width * 0.8,
-                                    alignSelf: 'center',
-                                    marginTop: 10,
-                                    borderRadius: 100,
-                                    paddingLeft: 20,
-                                    borderWidth: 1,
-                                    borderColor: Colors.grey,
-                                    color: Colors.silver,
-                                }}
-                            />
+                                style={styles.input} />
                         </View>
 
-                        <View
-                            style={{
-                                width: width * 0.8,
-                                alignSelf: 'center',
-                                paddingVertical: 10,
-                                marginTop: 5,
-                            }}>
+                        <View style={[styles.inputView, { marginTop: 5 }]}>
 
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <View style={styles.inputTitleView}>
 
 
                                 <Text
-                                    style={{ fontSize: 18, fontWeight: 'bold', color: '#354953' }}>
+                                    style={styles.inputTitle}>
                                     Cellulare
                                 </Text>
 
@@ -166,16 +103,7 @@ export class EnterPersonalDetail extends Component {
                                 placeholderTextColor={Colors.silver}
                                 onChangeText={(cellulare) => this.setState({ cellulare, active: true })}
                                 keyboardType="number-pad"
-                                style={{
-                                    width: width * 0.8,
-                                    alignSelf: 'center',
-                                    marginTop: 10,
-                                    borderRadius: 100,
-                                    paddingLeft: 20,
-                                    borderWidth: 1,
-                                    borderColor: Colors.grey,
-                                    color: Colors.silver,
-                                }}
+                                style={styles.input}
                             />
                         </View>
 
@@ -198,11 +126,7 @@ export class EnterPersonalDetail extends Component {
                         margin: 10,
                     }}>
                     <Text
-                        style={{
-                            textAlign: 'center',
-                            color: Colors.white,
-                            fontWeight: 'bold',
-                        }}>
+                        style={styles.procediText}>
                         Procedi
                     </Text>
                 </TouchableOpacity>
@@ -211,5 +135,54 @@ export class EnterPersonalDetail extends Component {
         )
     }
 }
+
+
+const styles = StyleSheet.create({
+    progressBarView: {
+        width: width * 0.9,
+        alignSelf: 'center',
+    },
+    titleView: {
+        width: width * 0.8,
+        alignSelf: 'center',
+        paddingVertical: 10,
+    },
+    title: {
+        fontSize: 20,
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
+    inputView: {
+        width: width * 0.8,
+        alignSelf: 'center',
+        paddingVertical: 10,
+        marginTop: 15,
+    },
+    inputTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#354953'
+    },
+    inputTitleView: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    input: {
+        width: width * 0.8,
+        alignSelf: 'center',
+        marginTop: 10,
+        borderRadius: 100,
+        paddingLeft: 20,
+        borderWidth: 1,
+        borderColor: Colors.grey,
+        color: Colors.silver,
+    },
+    procediText: {
+        textAlign: 'center',
+        color: Colors.white,
+        fontWeight: 'bold',
+    }
+})
 
 export default EnterPersonalDetail
