@@ -21,7 +21,7 @@ export class SelectDateOfBirth extends Component {
   };
   render() {
     let date = this.state.date?.split('-');
-    
+
     return (
       <View style={{ flex: 1, backgroundColor: Colors.white }}>
         <Header navigation={this.props.navigation} />
@@ -32,7 +32,11 @@ export class SelectDateOfBirth extends Component {
             alignSelf: 'center',
           }}
         >
-          <ProgressBar value={0.25} color={Colors.sky_blue} heartColor={Colors.black} />
+          <ProgressBar
+            value={0.25}
+            color={Colors.sky_blue}
+            heartColor={Colors.black}
+          />
         </View>
 
         <View style={{ flex: 1 }}>
@@ -109,7 +113,9 @@ export class SelectDateOfBirth extends Component {
           }}
         >
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('EnterPersonalDetail')}
+            onPress={() =>
+              this.props.navigation.navigate('EnterPersonalDetail')
+            }
             disabled={!this.state.date}
             style={{
               width: width * 0.8,
@@ -139,6 +145,7 @@ export class SelectDateOfBirth extends Component {
         {/* Calendar Modal */}
         <Modal visible={this.state.calendar_modal} transparent={true}>
           <View
+            onTouchEnd={() => this.setState({ calendar_modal: false })}
             style={{
               flex: 1,
               backgroundColor: 'rgba(232, 232, 232,0.7)',
@@ -149,7 +156,6 @@ export class SelectDateOfBirth extends Component {
             <View
               style={{
                 width: width * 0.9,
-                backgroundColor: 'red',
               }}
             >
               <Calendar
@@ -183,7 +189,7 @@ export class SelectDateOfBirth extends Component {
                         fontSize: 18,
                       }}
                     >
-                      {Months[new Date(date).getMonth()]}{' '}
+                      {Months[new Date(date).getMonth() + 1]}{' '}
                       {new Date(date).getFullYear()}
                     </Text>
                   </View>

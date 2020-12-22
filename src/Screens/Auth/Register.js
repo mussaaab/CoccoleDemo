@@ -14,7 +14,14 @@ import { Header } from '../../Components';
 const { width, height } = Dimensions.get('screen');
 
 export class Register extends Component {
+  state = {
+    email: '',
+    password: '',
+  };
+
   render() {
+    let { email, password } = this.state;
+
     return (
       <View style={{ flex: 1, backgroundColor: Colors.Blue_Chill }}>
         <View style={{ flex: 1, alignItems: 'center' }}>
@@ -175,6 +182,8 @@ export class Register extends Component {
                     borderColor: Colors.grey,
                     color: Colors.silver,
                   }}
+                  onChangeText={(email) => this.setState({ email })}
+                  value={email}
                 />
               </View>
 
@@ -204,6 +213,9 @@ export class Register extends Component {
                     borderColor: Colors.grey,
                     color: Colors.silver,
                   }}
+                  value={password}
+                  onChangeText={(password) => this.setState({ password })}
+                  secureTextEntry={true}
                 />
               </View>
 
@@ -211,12 +223,15 @@ export class Register extends Component {
                 onPress={() =>
                   this.props.navigation.navigate('SelectDateOfBirth')
                 }
+                disabled={!email || !password}
                 style={{
                   width: width * 0.8,
                   alignSelf: 'center',
-                  backgroundColor: Colors.silver,
+                  backgroundColor:
+                    email && password ? Colors.fountain_blue : Colors.silver,
                   borderWidth: 1,
-                  borderColor: Colors.grey,
+                  borderColor:
+                    email && password ? Colors.fountain_blue : Colors.grey,
                   borderRadius: 100,
                   paddingVertical: 15,
                   marginTop: 15,
