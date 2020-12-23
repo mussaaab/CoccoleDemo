@@ -5,7 +5,15 @@ import SelectDateOfBirth from '../Screens/Auth/SelectDateOfBirth';
 import EnterPersonalDetail from '../Screens/Auth/EnterPersonalDetail';
 import BestTripPampers from '../Screens/Auth/BestTripPampers';
 import JoinFamily from '../Screens/Auth/JoinFamily';
+import RegisterComplete from '../Screens/Auth/RegisterComplete';
 
-
-
-export { SplashLoading, RegisterOrLoginScreen, Register, SelectDateOfBirth, EnterPersonalDetail, BestTripPampers, JoinFamily }
+export {
+  SplashLoading,
+  RegisterOrLoginScreen,
+  Register,
+  SelectDateOfBirth,
+  EnterPersonalDetail,
+  BestTripPampers,
+  JoinFamily,
+  RegisterComplete,
+};
