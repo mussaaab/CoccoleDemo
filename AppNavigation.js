@@ -3,14 +3,19 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 // Screens
 import {
+  SplashLoading,
   RegisterOrLoginScreen,
   Register,
   SelectDateOfBirth,
-  SplashLoading,
+  DateOfDelivery,
+  LastPeriodDate,
+  ChildbirthDate,
+  ConceptionDate,
   EnterPersonalDetail,
   BestTripPampers,
   JoinFamily,
   RegisterComplete,
+  Login,
 } from './src/Screens';
 
 const AuthStack = createStackNavigator();
@@ -39,6 +44,26 @@ const Auth = () => {
         options={{ headerShown: false }}
       />
       <AuthStack.Screen
+        name="DateOfDelivery"
+        component={DateOfDelivery}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="LastPeriodDate"
+        component={LastPeriodDate}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="ChildbirthDate"
+        component={ChildbirthDate}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="ConceptionDate"
+        component={ConceptionDate}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
         name="EnterPersonalDetail"
         component={EnterPersonalDetail}
         options={{ headerShown: false }}
@@ -56,6 +81,11 @@ const Auth = () => {
       <AuthStack.Screen
         name="RegisterComplete"
         component={RegisterComplete}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="Login"
+        component={Login}
         options={{ headerShown: false }}
       />
     </AuthStack.Navigator>

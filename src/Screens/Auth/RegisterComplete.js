@@ -39,7 +39,7 @@ export class RegisterComplete extends Component {
           </View>
 
           <View style={styles.btnView}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("Login")}>
               <Text style={styles.btnText}>Accedi</Text>
             </TouchableOpacity>
           </View>

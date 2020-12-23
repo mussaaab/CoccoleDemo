@@ -67,7 +67,7 @@ export class SelectDateOfBirth extends Component {
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity style={styles.textBtn}>
+          <TouchableOpacity style={styles.textBtn} onPress={() => this.props.navigation.navigate("DateOfDelivery")}>
 
             <Text style={{ color: Colors.Teal2 }}>
               Non conosci la data presunta del parto?
