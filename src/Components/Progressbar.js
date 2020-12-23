@@ -15,7 +15,7 @@ export default ProgressBar = ({ value, color, heartColor }) => {
       <Progress.Bar
         progress={value}
         borderWidth={0}
-        color={Colors.fountain_blue}
+        color={Colors.Teal2}
         unfilledColor={Colors.sky_blue}
         width={width * 0.8}
 
