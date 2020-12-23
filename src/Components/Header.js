@@ -1,5 +1,12 @@
 import React from 'react';
-import { Text, View, Image, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+  StyleSheet,
+} from 'react-native';
 import { Images, Colors } from '../Config';
 
 // Icons
@@ -7,37 +14,30 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 const { width, height } = Dimensions.get('window');
 
-export default Header = ({ navigation }) => {
+export default Header = ({ navigation, button }) => {
   return (
     <View style={styles.mainView}>
-
       <View style={styles.imgView}>
-
-        <Image
-          source={Images.Pamper_logo}
-          style={styles.img}
-        />
+        <Image source={Images.Pamper_logo} style={styles.img} />
 
         <Text style={{ color: Colors.deep_sea_green }}>
           Con amore si cambia
         </Text>
-
       </View>
 
       <View style={{ flex: 1, position: 'absolute' }}>
-
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={styles.button}>
-
-          <Entypo name="chevron-left" size={32} color={Colors.white} />
-        </TouchableOpacity>
-
+        {button == true ? (
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={styles.button}
+          >
+            <Entypo name="chevron-left" size={32} color={Colors.white} />
+          </TouchableOpacity>
+        ) : null}
       </View>
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   mainView: {
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     height: height * 0.08,
     resizeMode: 'contain',
   },
-  button:{
+  button: {
     width: height * 0.06,
     height: height * 0.06,
     alignItems: 'center',
@@ -63,5 +63,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#3cc9cf',
     borderRadius: 100,
     elevation: 5,
-  }
-})
+  },
+});

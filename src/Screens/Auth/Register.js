@@ -24,7 +24,7 @@ export class Register extends Component {
     let { email, password } = this.state;
 
     return (
-      <View style={{ flex: 1, backgroundColor: Colors.Blue_Chill }}>
+      <View style={{ flex: 1, backgroundColor: Colors.Teal2 }}>
 
         <View style={{ flex: 1, alignItems: 'center' }}>
 

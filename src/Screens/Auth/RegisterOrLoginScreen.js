@@ -24,10 +24,10 @@ export class RegisterOrLoginScreen extends Component {
 
                     <View style={styles.buttonsView}>
                         <TouchableOpacity style={styles.registerBtn} onPress={() => this.props.navigation.navigate("Register")}>
-                            <Text style={{ color: Colors.Blue_Chill, fontWeight: 'bold' }}>Registrati</Text>
+                            <Text style={{ color: Colors.Teal2, fontWeight: 'bold' }}>Registrati</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={[styles.registerBtn, { backgroundColor: Colors.Blue_Chill, borderWidth: 1, borderColor: Colors.white }]}>
+                        <TouchableOpacity style={[styles.registerBtn, { backgroundColor: Colors.Teal2, borderWidth: 1, borderColor: Colors.white }]}>
                             <Text style={{ color: Colors.white, fontWeight: 'bold' }}>Accedi</Text>
                         </TouchableOpacity>
 
@@ -45,7 +45,7 @@ export class RegisterOrLoginScreen extends Component {
 const styles = StyleSheet.create({
     mainView: {
         flex: 1,
-        backgroundColor: Colors.Blue_Chill
+        backgroundColor: Colors.Teal2
     },
     HeaderView: {
         flex: 0.8,

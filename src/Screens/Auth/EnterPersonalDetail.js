@@ -26,7 +26,7 @@ export class EnterPersonalDetail extends Component {
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: Colors.white }}>
-                <Header navigation={this.props.navigation} />
+                <Header navigation={this.props.navigation} button={true} />
 
                 <View style={styles.progressBarView}>
                     <ProgressBar value={0.5} color={Colors.sky_blue} heartColor={Colors.black} />

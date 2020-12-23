@@ -25,7 +25,7 @@ export class SelectDateOfBirth extends Component {
 
     return (
       <View style={{ flex: 1, backgroundColor: Colors.white }}>
-        <Header navigation={this.props.navigation} />
+        <Header navigation={this.props.navigation} button={true} />
 
         <View style={styles.progressBarView}>
           <ProgressBar
@@ -69,7 +69,7 @@ export class SelectDateOfBirth extends Component {
 
           <TouchableOpacity style={styles.textBtn}>
 
-            <Text style={{ color: Colors.Blue_Chill }}>
+            <Text style={{ color: Colors.Teal2 }}>
               Non conosci la data presunta del parto?
             </Text>
 
