@@ -16,6 +16,11 @@ import {
   JoinFamily,
   RegisterComplete,
   Login,
+  ForgotPassword,
+  forgotPasswordMsg,
+  PrivacyPolicy,
+  AboutBabyDetail,
+  BirthOrPersumedDate
 } from './src/Screens';
 
 const AuthStack = createStackNavigator();
@@ -86,6 +91,31 @@ const Auth = () => {
       <AuthStack.Screen
         name="Login"
         component={Login}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="ForgotPassword"
+        component={ForgotPassword}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="forgotPasswordMsg"
+        component={forgotPasswordMsg}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="PrivacyPolicy"
+        component={PrivacyPolicy}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="AboutBabyDetail"
+        component={AboutBabyDetail}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="BirthOrPersumedDate"
+        component={BirthOrPersumedDate}
         options={{ headerShown: false }}
       />
     </AuthStack.Navigator>

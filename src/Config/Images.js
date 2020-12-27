@@ -4,5 +4,6 @@ export default Images = {
     apple_icon: require("../Assets/apple_social_icon.png"),
     google_icon: require("../Assets/google_social_icon.png"),
     calendar: require('../Assets/calendar.png'),
-    family_img: require('../Assets/family_img.png')
+    family_img: require('../Assets/family_img.png'),
+    visual: require('../Assets/visual.png')
 }

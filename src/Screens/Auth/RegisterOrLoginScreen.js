@@ -27,7 +27,7 @@ export class RegisterOrLoginScreen extends Component {
                             <Text style={{ color: Colors.Teal2, fontWeight: 'bold' }}>Registrati</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={[styles.registerBtn, { backgroundColor: Colors.Teal2, borderWidth: 1, borderColor: Colors.white }]}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")} style={[styles.registerBtn, { backgroundColor: Colors.Teal2, borderWidth: 1, borderColor: Colors.white }]}>
                             <Text style={{ color: Colors.white, fontWeight: 'bold' }}>Accedi</Text>
                         </TouchableOpacity>
 

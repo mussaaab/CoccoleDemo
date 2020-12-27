@@ -7,7 +7,8 @@ import {
   Image,
   TextInput,
   ScrollView,
-  StyleSheet
+  StyleSheet,
+  TextPropTypes
 } from 'react-native';
 import { Images, Colors } from '../../Config';
 import { Header } from '../../Components';
@@ -29,7 +30,7 @@ export class Register extends Component {
         <View style={{ flex: 1, alignItems: 'center' }}>
 
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Header navigation={this.props.navigation} />
+            <Header navigation={this.props.navigation} button={true} />
 
             <View
               style={styles.bodyView}>
@@ -137,6 +138,8 @@ export class Register extends Component {
                 />
               </View>
 
+
+
               <TouchableOpacity
                 onPress={() =>
                   this.props.navigation.navigate('SelectDateOfBirth')
@@ -163,16 +166,16 @@ export class Register extends Component {
 
               <View style={styles.footerView}>
 
-                <Text style={{ fontSize: 16 }}>Hai già un account? </Text>
+                <Text style={{ fontSize: 16 }}>Hai già un account?  </Text>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
 
-                  <Text style={{ color: Colors.fountain_blue, fontSize: 16,}}>
+                  <Text style={{ color: Colors.fountain_blue, fontSize: 16, }}>
                     Accedi
                   </Text>
 
                 </TouchableOpacity>
-                
+
               </View>
             </View>
           </ScrollView>
@@ -251,13 +254,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   footerView: {
-    alignItems: 'center',
+    alignItems: 'flex-end',
     justifyContent: 'center',
     flexDirection: 'row',
     flex: 1,
+    paddingVertical: 15
   }
-
-
 })
 
 export default Register;

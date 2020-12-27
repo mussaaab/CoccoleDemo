@@ -8,10 +8,8 @@ import {
     Modal,
     StyleSheet
 } from 'react-native';
-import { Calendar } from 'react-native-calendars';
 import { Header, ProgressBar } from '../../Components';
-import { Images, Colors } from '../../Config';
-import { Months } from '../../Config/Api';
+import { Colors } from '../../Config';
 
 const { width, height } = Dimensions.get('window');
 
@@ -52,7 +50,7 @@ export class DateOfDelivery extends Component {
                     </View>
 
                 </View>
-                
+
                 <View style={styles.footerView}>
 
                     <TouchableOpacity>

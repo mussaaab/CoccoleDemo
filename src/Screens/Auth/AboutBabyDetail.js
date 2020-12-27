@@ -11,36 +11,33 @@ import {
 import { Header, ProgressBar } from '../../Components';
 import { Colors } from '../../Config';
 
+
 const { width, height } = Dimensions.get('window');
 
-export class ChildbirthDate extends Component {
+export class AboutBabyDetail extends Component {
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: Colors.white }}>
                 <Header navigation={this.props.navigation} button={true} />
 
                 <View style={{ flex: 1 }}>
-                    <View style={styles.progressBarView}>
-                        <ProgressBar
-                            value={0.25}
-                            color={Colors.sky_blue}
-                            heartColor={Colors.black}
-                        />
-                    </View>
 
                     <View style={styles.titleView}>
-                        <Text style={styles.title}>Ecco la tua data presunta del parto</Text>
+                        <Text style={styles.title}>Dicci di più sul tuo bambino!</Text>
                     </View>
 
                     <View style={styles.textView}>
-                        <Text style={styles.text}>Calcolata in base alla data di inizio della tua ultima mestruazione{' '}
-                            <Text style={{ fontWeight: 'bold' }}>(01/09/2020)</Text>
+                        <Text style={{textAlign: 'center'}}>È questa la data di nascita o presunto parto del bambino a cui vuoi dedicare il Diario? Hai inserito questa data durante la fase di registrazione al Club Pampers:
                         </Text>
                     </View>
 
                     <View style={styles.dateView}>
                         <Text style={styles.date}>8 Settembre 2021</Text>
                     </View>
+
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate("BirthOrPersumedDate")} style={styles.changeDateBtn}>
+                        <Text style={styles.date}>Modifica la data</Text>
+                    </TouchableOpacity>
 
                 </View>
 
@@ -52,14 +49,15 @@ export class ChildbirthDate extends Component {
                         }
                         style={styles.button}>
 
-                        <Text style={styles.confirmText}> Conferma e continua </Text>
+                        <Text style={styles.confirmText}> Procedi </Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.textBtn}>
 
-                        <Text style={styles.text}> Conosco la data di nascita </Text>
+                        <Text style={styles.text}> Crea il diario in seguito </Text>
                     </TouchableOpacity>
                 </View>
+
             </View>
         )
     }
@@ -71,7 +69,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     titleView: {
-        width: width * 0.5,
+        width: width * 0.7,
         alignSelf: 'center',
         paddingVertical: 15,
     },
@@ -84,9 +82,6 @@ const styles = StyleSheet.create({
         width: width * 0.8,
         alignSelf: 'center',
         marginTop: 5
-    },
-    text: {
-        textAlign: 'center'
     },
     dateView: {
         alignSelf: 'center',
@@ -130,4 +125,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default ChildbirthDate
+export default AboutBabyDetail

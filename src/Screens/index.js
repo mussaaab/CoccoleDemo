@@ -11,6 +11,11 @@ import BestTripPampers from '../Screens/Auth/BestTripPampers';
 import JoinFamily from '../Screens/Auth/JoinFamily';
 import RegisterComplete from '../Screens/Auth/RegisterComplete';
 import Login from '../Screens/Auth/Login';
+import ForgotPassword from '../Screens/Auth/ForgotPassword';
+import forgotPasswordMsg from '../Screens/Auth/forgotPasswordMsg';
+import PrivacyPolicy from '../Screens/Auth/PrivacyPolicy';
+import AboutBabyDetail from '../Screens/Auth/AboutBabyDetail';
+import BirthOrPersumedDate from '../Screens/Auth/BirthOrPersumedDate';
 
 export {
   SplashLoading,
@@ -25,5 +30,10 @@ export {
   BestTripPampers,
   JoinFamily,
   RegisterComplete,
-  Login
+  Login,
+  ForgotPassword,
+  forgotPasswordMsg,
+  PrivacyPolicy,
+  AboutBabyDetail,
+  BirthOrPersumedDate
 };
