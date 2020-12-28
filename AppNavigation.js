@@ -20,7 +20,12 @@ import {
   forgotPasswordMsg,
   PrivacyPolicy,
   AboutBabyDetail,
-  BirthOrPersumedDate
+  BirthOrPersumedDate,
+  Gender,
+  AddLater,
+  Abandoning,
+  DiaryReady,
+  Ottimo
 } from './src/Screens';
 
 const AuthStack = createStackNavigator();
@@ -116,6 +121,31 @@ const Auth = () => {
       <AuthStack.Screen
         name="BirthOrPersumedDate"
         component={BirthOrPersumedDate}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="Gender"
+        component={Gender}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="AddLater"
+        component={AddLater}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="Abandoning"
+        component={Abandoning}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="DiaryReady"
+        component={DiaryReady}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="Ottimo"
+        component={Ottimo}
         options={{ headerShown: false }}
       />
     </AuthStack.Navigator>

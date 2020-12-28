@@ -16,6 +16,11 @@ import forgotPasswordMsg from '../Screens/Auth/forgotPasswordMsg';
 import PrivacyPolicy from '../Screens/Auth/PrivacyPolicy';
 import AboutBabyDetail from '../Screens/Auth/AboutBabyDetail';
 import BirthOrPersumedDate from '../Screens/Auth/BirthOrPersumedDate';
+import Gender from '../Screens/Auth/Gender';
+import AddLater from '../Screens/Auth/AddLater';
+import Abandoning from '../Screens/Auth/Abandoning';
+import DiaryReady from '../Screens/Auth/DiaryReady';
+import Ottimo from '../Screens/Auth/Ottimo';
 
 export {
   SplashLoading,
@@ -35,5 +40,10 @@ export {
   forgotPasswordMsg,
   PrivacyPolicy,
   AboutBabyDetail,
-  BirthOrPersumedDate
+  BirthOrPersumedDate,
+  Gender,
+  AddLater,
+  Abandoning,
+  DiaryReady,
+  Ottimo
 };
