@@ -46,7 +46,7 @@ class Ottimo extends Component {
           <View style={styles.btnView}>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.props.navigation.navigate('')}
+              onPress={() => this.props.navigation.navigate('TipsAndNews')}
             >
               <Text style={styles.btnText}>Vai al Diario</Text>
             </TouchableOpacity>

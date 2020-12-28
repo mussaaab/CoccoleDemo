@@ -25,7 +25,10 @@ import {
   AddLater,
   Abandoning,
   DiaryReady,
-  Ottimo
+  Ottimo,
+  TipsAndNews,
+  CustomizeExperience,
+  StartDiary
 } from './src/Screens';
 
 const AuthStack = createStackNavigator();
@@ -146,6 +149,21 @@ const Auth = () => {
       <AuthStack.Screen
         name="Ottimo"
         component={Ottimo}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="TipsAndNews"
+        component={TipsAndNews}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="CustomizeExperience"
+        component={CustomizeExperience}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="StartDiary"
+        component={StartDiary}
         options={{ headerShown: false }}
       />
     </AuthStack.Navigator>

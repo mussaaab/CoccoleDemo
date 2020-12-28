@@ -21,6 +21,9 @@ import AddLater from '../Screens/Auth/AddLater';
 import Abandoning from '../Screens/Auth/Abandoning';
 import DiaryReady from '../Screens/Auth/DiaryReady';
 import Ottimo from '../Screens/Auth/Ottimo';
+import TipsAndNews from '../Screens/Auth/TipsAndNews';
+import CustomizeExperience from '../Screens/Auth/CustomizeExperience';
+import StartDiary from '../Screens/Auth/StartDiary';
 
 export {
   SplashLoading,
@@ -45,5 +48,8 @@ export {
   AddLater,
   Abandoning,
   DiaryReady,
-  Ottimo
+  Ottimo,
+  TipsAndNews,
+  CustomizeExperience,
+  StartDiary
 };
