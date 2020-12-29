@@ -1,29 +1,31 @@
 import SplashLoading from './SplashLoading';
-import RegisterOrLoginScreen from '../Screens/Auth/RegisterOrLoginScreen';
-import Register from '../Screens/Auth/Register';
-import SelectDateOfBirth from '../Screens/Auth/SelectDateOfBirth';
-import DateOfDelivery from '../Screens/Auth/DateOfDelivery';
-import LastPeriodDate from '../Screens/Auth/LastPeriodDate';
-import ChildbirthDate from '../Screens/Auth/ChildbirthDate';
-import ConceptionDate from '../Screens/Auth/ConceptionDate';
-import EnterPersonalDetail from '../Screens/Auth/EnterPersonalDetail';
-import BestTripPampers from '../Screens/Auth/BestTripPampers';
-import JoinFamily from '../Screens/Auth/JoinFamily';
-import RegisterComplete from '../Screens/Auth/RegisterComplete';
-import Login from '../Screens/Auth/Login';
-import ForgotPassword from '../Screens/Auth/ForgotPassword';
-import forgotPasswordMsg from '../Screens/Auth/forgotPasswordMsg';
-import PrivacyPolicy from '../Screens/Auth/PrivacyPolicy';
-import AboutBabyDetail from '../Screens/Auth/AboutBabyDetail';
-import BirthOrPersumedDate from '../Screens/Auth/BirthOrPersumedDate';
-import Gender from '../Screens/Auth/Gender';
-import AddLater from '../Screens/Auth/AddLater';
-import Abandoning from '../Screens/Auth/Abandoning';
-import DiaryReady from '../Screens/Auth/DiaryReady';
-import Ottimo from '../Screens/Auth/Ottimo';
-import TipsAndNews from '../Screens/Auth/TipsAndNews';
-import CustomizeExperience from '../Screens/Auth/CustomizeExperience';
-import StartDiary from '../Screens/Auth/StartDiary';
+import RegisterOrLoginScreen from './Auth/RegisterOrLoginScreen';
+import Register from './Auth/Register';
+import SelectDateOfBirth from './Auth/SelectDateOfBirth';
+import DateOfDelivery from './Auth/DateOfDelivery';
+import LastPeriodDate from './Auth/LastPeriodDate';
+import ChildbirthDate from './Auth/ChildbirthDate';
+import ConceptionDate from './Auth/ConceptionDate';
+import EnterPersonalDetail from './Auth/EnterPersonalDetail';
+import BestTripPampers from './Auth/BestTripPampers';
+import JoinFamily from './Auth/JoinFamily';
+import RegisterComplete from './Auth/RegisterComplete';
+import Login from './Auth/Login';
+import ForgotPassword from './Auth/ForgotPassword';
+import forgotPasswordMsg from './Auth/forgotPasswordMsg';
+import PrivacyPolicy from './Auth/PrivacyPolicy';
+import AboutBabyDetail from './Auth/AboutBabyDetail';
+import BirthOrPersumedDate from './Auth/BirthOrPersumedDate';
+import Gender from './Auth/Gender';
+import AddLater from './Auth/AddLater';
+import Abandoning from './Auth/Abandoning';
+import DiaryReady from './Auth/DiaryReady';
+import Ottimo from './Auth/Ottimo';
+import TipsAndNews from './Auth/TipsAndNews';
+import CustomizeExperience from './Auth/CustomizeExperience';
+import StartDiary from './Auth/StartDiary';
+import WelcomeSwiper from './Auth/WelcomeSwiper';
+import NewCollectionPoint from './Auth/NewCollection&Point';
 
 export {
   SplashLoading,
@@ -51,5 +53,7 @@ export {
   Ottimo,
   TipsAndNews,
   CustomizeExperience,
-  StartDiary
+  StartDiary,
+  WelcomeSwiper,
+  NewCollectionPoint
 };

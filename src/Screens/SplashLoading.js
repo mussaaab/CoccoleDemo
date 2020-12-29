@@ -22,7 +22,7 @@ export class SplashLoading extends Component {
           index: 0,
           routes: [
             {
-              name: 'RegisterOrLogin',
+              name: 'WelcomeSwiper',
             },
           ],
         }),

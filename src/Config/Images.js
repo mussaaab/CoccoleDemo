@@ -6,5 +6,11 @@ export default Images = {
     calendar: require('../Assets/calendar.png'),
     family_img: require('../Assets/family_img.png'),
     visual: require('../Assets/visual.png'),
-    bell: require('../Assets/bell.png')
+    bell: require('../Assets/bell.png'),
+    giftBoxes: require('../Assets/giftboxes.png'),
+    Onboarding: require('../Assets/Onboarding.png'),
+    Onboarding2: require('../Assets/Onboarding2.png'),
+    senza: require('../Assets/Senza.png'),
+    baby: require('../Assets/baby.jpeg'),
+    baby2: require('../Assets/baby2.jpg'),
 }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, Image, TouchableOpacity, Dimensions, StyleSheet, Button } from 'react-native';
+import { View, TouchableOpacity, Dimensions, StyleSheet, Button } from 'react-native';
 import * as Progress from 'react-native-progress';
+import { Colors } from '../Config';
 
 // Icons
 import Entypo from 'react-native-vector-icons/Entypo';
-import { Colors } from '../Config';
 
 const { width, height } = Dimensions.get('window');
 

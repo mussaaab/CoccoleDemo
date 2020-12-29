@@ -28,7 +28,9 @@ import {
   Ottimo,
   TipsAndNews,
   CustomizeExperience,
-  StartDiary
+  StartDiary,
+  WelcomeSwiper,
+  NewCollectionPoint
 } from './src/Screens';
 
 const AuthStack = createStackNavigator();
@@ -164,6 +166,16 @@ const Auth = () => {
       <AuthStack.Screen
         name="StartDiary"
         component={StartDiary}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="WelcomeSwiper"
+        component={WelcomeSwiper}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="NewCollectionPoint"
+        component={NewCollectionPoint}
         options={{ headerShown: false }}
       />
     </AuthStack.Navigator>

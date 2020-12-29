@@ -7,5 +7,8 @@ export default Colors = {
     fountain_blue: "#5ABEBE",
     deep_sea_green: "#075b4a",
     sky_blue: "#edf8f9",
-    purple2: "#ffe8fd"
+    purple2: "#ffe8fd",
+    dark_purple2: "#7e4585",
+    yellow: "#facc16",
+    
 }
