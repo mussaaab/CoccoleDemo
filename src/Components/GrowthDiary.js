@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -13,6 +13,17 @@ import { Colors, Images } from '../Config';
 const { width, height } = Dimensions.get('window');
 
 export const GrowthDiary = ({ navigation }) => {
+
+  // const [isLogin, setIsLogin] = useState(false)
+
+  // Next = () => {
+
+  //   if (!isLogin) {
+  //     setIsLogin(isLogin = true)
+  //     console.warn(isLogin)
+  //   }
+  // }
+
   return (
     <View style={{ flex: 1 }}>
       <View style={{ height: height * 0.55, justifyContent: 'center' }}>
@@ -74,3 +85,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+
+
+//

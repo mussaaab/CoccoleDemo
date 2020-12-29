@@ -18,10 +18,54 @@ export class Register extends Component {
   state = {
     email: '',
     password: '',
+    isValidEmail: '',
+    isValidPassword: '',
+    active: false
   };
 
+  Login = () => {
+    let { email, password, } = this.state;
+    console.warn("sdda");
+
+    if (email && password) {
+      this.props.navigation.navigate('SelectDateOfBirth')
+    }
+  }
+
+  onEndEmail = () => {
+    let { email } = this.state;
+    const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+    if (!email.match(emailRegex)) {
+      this.setState({
+        isValidEmail: "invalid",
+
+      })
+    } else {
+      this.setState({
+        isValidEmail: true,
+      })
+    }
+  }
+
+  onEndPassword = () => {
+    let { password, isValidEmail } = this.state;
+
+    if (password.length < 6) {
+      this.setState({
+        isValidPassword: "invalid",
+        active: false
+      })
+    } else {
+      this.setState({
+        isValidPassword: true,
+        active: true
+      })
+    }
+  }
+
   render() {
-    let { email, password } = this.state;
+    let { email, password, isValidEmail, isValidPassword, active } = this.state;
 
     return (
       <View style={{ flex: 1, backgroundColor: Colors.Teal2 }}>
@@ -114,11 +158,16 @@ export class Register extends Component {
                 <TextInput
                   placeholder="Inserisci il tuo indirizzo e-mail"
                   placeholderTextColor={Colors.silver}
-                  style={styles.input}
+                  style={[styles.input, { borderColor: isValidEmail == 'invalid' ? Colors.red : isValidEmail == true ? Colors.fountain_blue : Colors.grey }]}
                   onChangeText={(email) => this.setState({ email })}
+                  onEndEditing={this.onEndEmail}
                   value={email}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
                 />
               </View>
+
+              {isValidEmail == "invalid" ? <View style={{ width: width * 0.8, paddingVertical: 15, alignSelf: 'center' }}><Text style={{ fontWeight: 'bold', fontSize: 12, color: Colors.red }}>Inserisci un indirizzo e-mail valido</Text></View> : null}
 
               <View style={[styles.inputView, { marginTop: 10 }]}>
 
@@ -130,28 +179,30 @@ export class Register extends Component {
                 <TextInput
                   placeholder="Inserisci la tua password"
                   placeholderTextColor={Colors.silver}
-                  style={styles.input}
+                  style={[styles.input, { borderColor: isValidPassword == 'invalid' ? Colors.red : isValidPassword == true ? Colors.fountain_blue : Colors.grey  }]}
                   value={password}
                   onChangeText={(password) => this.setState({ password })}
                   secureTextEntry={true}
+                  onEndEditing={this.onEndPassword}
                 />
               </View>
+
+              {isValidPassword == "invalid" ? <View style={{ width: width * 0.8, paddingVertical: 15, alignSelf: 'center' }}><Text style={{ fontWeight: 'bold', fontSize: 12, color: Colors.red }}>Messaggio errore</Text></View> : null}
+
 
 
 
               <TouchableOpacity
-                onPress={() =>
-                  this.props.navigation.navigate('SelectDateOfBirth')
-                }
-                disabled={!email || !password}
+                onPress={this.Login}
+                disabled={!active && !isValidEmail}
                 style={{
                   width: width * 0.8,
                   alignSelf: 'center',
                   backgroundColor:
-                    email && password ? Colors.fountain_blue : Colors.silver,
+                    active ? Colors.fountain_blue : Colors.silver,
                   borderWidth: 1,
                   borderColor:
-                    email && password ? Colors.fountain_blue : Colors.grey,
+                    active ? Colors.fountain_blue : Colors.grey,
                   borderRadius: 100,
                   paddingVertical: 15,
                   marginTop: 15,
@@ -244,7 +295,6 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     paddingLeft: 20,
     borderWidth: 1,
-    borderColor: Colors.grey,
     color: Colors.silver,
     paddingVertical: 10
   },

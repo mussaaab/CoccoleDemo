@@ -10,5 +10,6 @@ export default Colors = {
     purple2: "#ffe8fd",
     dark_purple2: "#7e4585",
     yellow: "#facc16",
+    red: "#e86363",
     
 }
