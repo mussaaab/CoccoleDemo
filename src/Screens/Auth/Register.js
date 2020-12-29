@@ -8,7 +8,6 @@ import {
   TextInput,
   ScrollView,
   StyleSheet,
-  TextPropTypes
 } from 'react-native';
 import { Images, Colors } from '../../Config';
 import { Header } from '../../Components';
@@ -29,7 +28,7 @@ export class Register extends Component {
 
         <View style={{ flex: 1, alignItems: 'center' }}>
 
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
             <Header navigation={this.props.navigation} button={true} />
 
             <View
@@ -247,6 +246,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.grey,
     color: Colors.silver,
+    paddingVertical: 10
   },
   procediText: {
     textAlign: 'center',

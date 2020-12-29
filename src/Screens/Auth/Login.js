@@ -26,7 +26,7 @@ export class Login extends Component {
     return (
       <View style={{ flex: 1, backgroundColor: Colors.Teal2 }}>
         <View style={{ flex: 1, alignItems: 'center' }}>
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
             <Header navigation={this.props.navigation} button={true} />
 
             <View style={styles.bodyView}>
@@ -217,6 +217,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.grey,
     color: Colors.silver,
+    paddingVertical: 10
   },
   forgotPassView: {
     paddingVertical: 15,

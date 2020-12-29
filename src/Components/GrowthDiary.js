@@ -12,7 +12,7 @@ import { Colors, Images } from '../Config';
 
 const { width, height } = Dimensions.get('window');
 
-export const GrowthDiary = ({navigation}) => {
+export const GrowthDiary = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <View style={{ height: height * 0.55, justifyContent: 'center' }}>
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     height: height * 0.2,
     justifyContent: 'flex-end',
     alignItems: 'center',
+    paddingVertical: 20,
   },
   button: {
     width: width * 0.7,

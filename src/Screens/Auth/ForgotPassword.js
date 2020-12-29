@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: Colors.grey,
         color: Colors.silver,
+        paddingVertical: 10
     },
     procediText: {
         textAlign: 'center',
