@@ -15,18 +15,21 @@ const { width, height } = Dimensions.get('window');
 
 export class ChildbirthDate extends Component {
     render() {
+        let { type } = this.props.route.params;
+        console.warn(type);
         return (
             <View style={{ flex: 1, backgroundColor: Colors.white }}>
                 <Header navigation={this.props.navigation} button={true} />
 
                 <View style={{ flex: 1 }}>
-                    <View style={styles.progressBarView}>
+
+                    {type !== 'login' ? <View style={styles.progressBarView}>
                         <ProgressBar
                             value={0.25}
                             color={Colors.sky_blue}
                             heartColor={Colors.black}
                         />
-                    </View>
+                    </View> : null}
 
                     <View style={styles.titleView}>
                         <Text style={styles.title}>Ecco la tua data presunta del parto</Text>
@@ -48,7 +51,7 @@ export class ChildbirthDate extends Component {
                 <View style={styles.footerView}>
                     <TouchableOpacity
                         onPress={() =>
-                            this.props.navigation.navigate('EnterPersonalDetail')
+                            this.props.navigation.navigate('Gender', {type})
                         }
                         style={styles.button}>
 

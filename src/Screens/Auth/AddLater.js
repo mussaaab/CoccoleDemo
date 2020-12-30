@@ -51,7 +51,7 @@ class AddLater extends Component {
                 value={name}
               />
 
-              <TouchableOpacity style={{ marginTop: 15 }}>
+              <TouchableOpacity style={{ marginTop: 15 }} onPress={() => this.props.navigation.navigate('DiaryReady')}>
                 <Text style={{ textAlign: 'center', color: Colors.Teal2 }}>
                   Non ho ancora deciso
                 </Text>
@@ -63,16 +63,10 @@ class AddLater extends Component {
         <View style={styles.footerView}>
           <TouchableOpacity
             disabled={!name}
-            style={{
-              width: width * 0.8,
-              alignSelf: 'center',
+            style={[styles.button, {
               backgroundColor: name ? Colors.fountain_blue : Colors.silver,
-              borderWidth: 1,
               borderColor: name ? Colors.fountain_blue : Colors.grey,
-              borderRadius: 100,
-              paddingVertical: 15,
-              marginTop: 15,
-            }}
+            }]}
           >
             <Text style={styles.btnText}>Crea il diario</Text>
           </TouchableOpacity>
@@ -113,6 +107,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     borderRadius: 100,
     paddingLeft: 20,
+    paddingVertical: 10,
     borderWidth: 1,
     borderColor: Colors.grey,
     color: Colors.silver,
@@ -145,6 +140,14 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontWeight: 'bold',
   },
+  button: {
+    width: width * 0.8,
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderRadius: 100,
+    paddingVertical: 15,
+    marginTop: 15,
+  }
 });
 
 export default AddLater;

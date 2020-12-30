@@ -26,6 +26,7 @@ import CustomizeExperience from './Auth/CustomizeExperience';
 import StartDiary from './Auth/StartDiary';
 import WelcomeSwiper from './Auth/WelcomeSwiper';
 import NewCollectionPoint from './Auth/NewCollection&Point';
+import LoyalityDiary from './Auth/LoyalityDiary';
 
 export {
   SplashLoading,
@@ -55,5 +56,6 @@ export {
   CustomizeExperience,
   StartDiary,
   WelcomeSwiper,
-  NewCollectionPoint
+  NewCollectionPoint,
+  LoyalityDiary
 };

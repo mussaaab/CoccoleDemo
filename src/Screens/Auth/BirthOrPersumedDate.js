@@ -22,6 +22,8 @@ export class BirthOrPersumedDate extends Component {
   };
   render() {
     let date = this.state.date?.split('-');
+    let { type } = this.props.route.params;
+
     return (
       <View style={{ flex: 1, backgroundColor: Colors.white }}>
         <Header navigation={this.props.navigation} button={true} />
@@ -61,7 +63,7 @@ export class BirthOrPersumedDate extends Component {
 
           <TouchableOpacity
             style={styles.textBtn}
-            onPress={() => this.props.navigation.navigate('DateOfDelivery')}
+            onPress={() => this.props.navigation.navigate('DateOfDelivery', { type })}
           >
             <Text style={{ color: Colors.Teal2 }}>
               Non conosci la data presunta del parto?
@@ -72,21 +74,14 @@ export class BirthOrPersumedDate extends Component {
         <View style={styles.footerView}>
           <TouchableOpacity
             onPress={() =>
-              this.props.navigation.navigate('Gender')
+              this.props.navigation.navigate('Gender', { type })
             }
             disabled={!this.state.date}
-            style={{
-              width: width * 0.8,
-              alignSelf: 'center',
+            style={[styles.button, {
               backgroundColor: this.state.date
                 ? Colors.fountain_blue
                 : Colors.silver,
-              borderWidth: 1,
-              borderColor: Colors.grey,
-              borderRadius: 100,
-              paddingVertical: 15,
-              margin: 15,
-            }}
+            }]}
           >
             <Text style={styles.procediText}>Procedi</Text>
           </TouchableOpacity>
@@ -211,6 +206,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  button: {
+    width: width * 0.8,
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: Colors.grey,
+    borderRadius: 100,
+    paddingVertical: 15,
+    margin: 15,
+  }
 });
 
 export default BirthOrPersumedDate;

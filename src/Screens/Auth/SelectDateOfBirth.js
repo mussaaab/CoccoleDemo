@@ -22,18 +22,19 @@ export class SelectDateOfBirth extends Component {
   };
   render() {
     let date = this.state.date?.split('-');
+    let { type } = this.props.route.params;
 
     return (
       <View style={{ flex: 1, backgroundColor: Colors.white }}>
         <Header navigation={this.props.navigation} button={true} />
 
-        <View style={styles.progressBarView}>
+        {type !== 'login' ? <View style={styles.progressBarView}>
           <ProgressBar
             value={0.25}
             color={Colors.sky_blue}
             heartColor={Colors.black}
           />
-        </View>
+        </View> : null}
 
         <View style={{ flex: 1 }}>
 
@@ -62,12 +63,12 @@ export class SelectDateOfBirth extends Component {
               }
               style={styles.calenderBtn}>
 
-              <Image source={Images.calendar} style={styles.calendarImg}/>
+              <Image source={Images.calendar} style={styles.calendarImg} />
 
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity style={styles.textBtn} onPress={() => this.props.navigation.navigate("DateOfDelivery")}>
+          <TouchableOpacity style={styles.textBtn} onPress={() => this.props.navigation.navigate("DateOfDelivery", { type })}>
 
             <Text style={{ color: Colors.Teal2 }}>
               Non conosci la data presunta del parto?
@@ -80,21 +81,14 @@ export class SelectDateOfBirth extends Component {
 
           <TouchableOpacity
             onPress={() =>
-              this.props.navigation.navigate('EnterPersonalDetail')
+              this.props.navigation.navigate('EnterPersonalDetail', { type: null })
             }
             disabled={!this.state.date}
-            style={{
-              width: width * 0.8,
-              alignSelf: 'center',
+            style={[styles.button, {
               backgroundColor: this.state.date
                 ? Colors.fountain_blue
                 : Colors.silver,
-              borderWidth: 1,
-              borderColor: Colors.grey,
-              borderRadius: 100,
-              paddingVertical: 15,
-              margin: 15,
-            }}
+            }]}
           >
             <Text style={styles.procediText}>
               Procedi
@@ -109,8 +103,8 @@ export class SelectDateOfBirth extends Component {
             onTouchEnd={() => this.setState({ calendar_modal: false })}
             style={styles.calendarModalView}
           >
-            <View style={{ width: width * 0.9}}>
-              
+            <View style={{ width: width * 0.9 }}>
+
               <Calendar
                 theme={{
                   backgroundColor: '#ffffff',
@@ -168,10 +162,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingVertical: 15,
   },
-  title: { 
-    fontSize: 20, 
-    textAlign: 'center', 
-    fontWeight: 'bold' 
+  title: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontWeight: 'bold'
   },
   selectDateView: {
     width: width * 0.8,
@@ -193,10 +187,10 @@ const styles = StyleSheet.create({
     height: height * 0.03,
     resizeMode: 'contain',
   },
-  textBtn: { 
-    width: width * 0.9, 
-    marginTop: 20, 
-    alignSelf: 'center' ,
+  textBtn: {
+    width: width * 0.9,
+    marginTop: 20,
+    alignSelf: 'center',
     alignItems: 'center'
   },
   footerView: {
@@ -214,6 +208,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(232, 232, 232,0.7)',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  button: {
+    width: width * 0.8,
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderColor: Colors.grey,
+    borderRadius: 100,
+    paddingVertical: 15,
+    margin: 15,
   }
 })
 

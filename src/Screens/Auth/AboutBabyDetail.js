@@ -38,7 +38,9 @@ export class AboutBabyDetail extends Component {
 
           <TouchableOpacity
             onPress={() =>
-              this.props.navigation.navigate('BirthOrPersumedDate')
+              this.props.navigation.navigate('BirthOrPersumedDate', {
+                type: 'login'
+              })
             }
             style={styles.changeDateBtn}
           >
@@ -48,9 +50,9 @@ export class AboutBabyDetail extends Component {
 
         <View style={styles.footerView}>
           <TouchableOpacity
-            // onPress={() =>
-            //   this.props.navigation.navigate('EnterPersonalDetail')
-            // }
+            onPress={() =>
+              this.props.navigation.navigate('DateOfDelivery', {type: 'login'})
+            }
             style={styles.button}
           >
             <Text style={styles.confirmText}> Procedi </Text>

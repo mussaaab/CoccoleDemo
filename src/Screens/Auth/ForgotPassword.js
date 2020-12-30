@@ -44,18 +44,12 @@ export class ForgotPassword extends Component {
                     <TouchableOpacity
                         onPress={() => this.props.navigation.navigate("forgotPasswordMsg")}
                         disabled={!email}
-                        style={{
-                            width: width * 0.8,
-                            alignSelf: 'center',
+                        style={[styles.button, {
                             backgroundColor:
                                 email ? Colors.fountain_blue : Colors.silver,
-                            borderWidth: 1,
                             borderColor:
                                 email ? Colors.fountain_blue : Colors.grey,
-                            borderRadius: 100,
-                            paddingVertical: 15,
-                            marginVertical: 15
-                        }}>
+                        }]}>
                         <Text style={styles.procediText}>
                             Accedi
                         </Text>
@@ -102,6 +96,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderRadius: 100,
         paddingLeft: 20,
+        paddingVertical: 10,
         borderWidth: 1,
         borderColor: Colors.grey,
         color: Colors.silver,
@@ -112,6 +107,14 @@ const styles = StyleSheet.create({
         color: Colors.white,
         fontWeight: 'bold',
     },
+    button: {
+        width: width * 0.8,
+        alignSelf: 'center',
+        borderWidth: 1,
+        borderRadius: 100,
+        paddingVertical: 15,
+        marginVertical: 15
+    }
 })
 
 export default ForgotPassword

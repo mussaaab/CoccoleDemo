@@ -9,13 +9,12 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import { Formik } from 'formik';
 import {
   Images,
   Colors,
-  emailRegex,
   loginValidationSchema,
 } from '../../Config';
+import { Formik } from 'formik';
 import { Header } from '../../Components';
 
 // Icons
@@ -32,12 +31,6 @@ export class Register extends Component {
     length: false,
   };
 
-  Login = () => {
-    let { email, password } = this.state;
-    if (email && password) {
-      this.props.navigation.navigate('SelectDateOfBirth');
-    }
-  };
 
   onChangePassword = (password) => {
     if (password.length >= 8) {
@@ -129,8 +122,6 @@ export class Register extends Component {
               <Formik
                 validationSchema={loginValidationSchema}
                 initialValues={{ email: '', password: '' }}
-                // onSubmit={(values) => console.log("dsadadada=====",values)}
-                // validateOnChange={(val) => console.warn("sdsda",val)}
               >
                 {({ handleChange, setFieldValue, values, errors }) => (
                   <>
@@ -146,8 +137,8 @@ export class Register extends Component {
                             borderColor: !values?.email
                               ? Colors.grey
                               : errors?.email
-                              ? Colors.red
-                              : Colors.fountain_blue,
+                                ? Colors.red
+                                : Colors.fountain_blue,
                           },
                         ]}
                         onChangeText={(email) => {
@@ -192,8 +183,8 @@ export class Register extends Component {
                             borderColor: !values?.password
                               ? Colors.grey
                               : errors?.password
-                              ? Colors.red
-                              : Colors.fountain_blue,
+                                ? Colors.red
+                                : Colors.fountain_blue,
                           },
                         ]}
                         value={values.password}
@@ -294,30 +285,23 @@ export class Register extends Component {
                     ) : null}
 
                     <TouchableOpacity
-                      onPress={this.Login}
+                      onPress={() => this.props.navigation.navigate('SelectDateOfBirth', {type: null})}
                       disabled={errors.password && errors.email}
-                      style={{
-                        width: width * 0.8,
-                        alignSelf: 'center',
+                      style={[styles.button, {
                         backgroundColor:
                           !errors.password &&
-                          !errors.email &&
-                          values.email &&
-                          values.password
+                            !errors.email &&
+                            values.email &&
+                            values.password
                             ? Colors.fountain_blue
-                            : Colors.silver,
-                        borderWidth: 1,
-                        borderColor:
+                            : Colors.silver, borderColor:
                           !errors.password &&
-                          !errors.email &&
-                          values.email &&
-                          values.password
+                            !errors.email &&
+                            values.email &&
+                            values.password
                             ? Colors.fountain_blue
                             : Colors.grey,
-                        borderRadius: 100,
-                        paddingVertical: 15,
-                        marginTop: 15,
-                      }}
+                      }]}
                     >
                       <Text style={styles.procediText}>Procedi</Text>
                     </TouchableOpacity>
@@ -341,7 +325,7 @@ export class Register extends Component {
             </View>
           </ScrollView>
         </View>
-      </View>
+      </View >
     );
   }
 }
@@ -421,6 +405,14 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 15,
   },
+  button: {
+    width: width * 0.8,
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderRadius: 100,
+    paddingVertical: 15,
+    marginTop: 15,
+  }
 });
 
 export default Register;

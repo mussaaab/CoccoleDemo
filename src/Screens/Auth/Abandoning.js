@@ -52,12 +52,12 @@ class Abandoning extends Component {
           <View style={styles.btnView}>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.props.navigation.navigate('')}
+              // onPress={() => this.props.navigation.navigate('')}
             >
               <Text style={styles.btnText}>Continua a creare il Diario</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={{ paddingVertical: 15 }}>
+            <TouchableOpacity style={{ paddingVertical: 15 }} onPress={() => this.props.navigation.navigate('LoyalityDiary')}>
               <Text style={{ color: Colors.white, textAlign: 'center' }}>
                 Abbandona
               </Text>

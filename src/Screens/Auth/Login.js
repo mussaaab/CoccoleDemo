@@ -9,7 +9,12 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import { Images, Colors } from '../../Config';
+import {
+  Images,
+  Colors,
+  loginValidationSchema,
+} from '../../Config';
+import { Formik } from 'formik';
 import { Header } from '../../Components';
 
 const { width, height } = Dimensions.get('window');
@@ -18,7 +23,11 @@ export class Login extends Component {
   state = {
     email: '',
     password: '',
+    validPassword: false
   };
+
+
+
 
   render() {
     let { email, password } = this.state;
@@ -85,68 +94,152 @@ export class Login extends Component {
                 <View style={styles.bottomLineView} />
               </View>
 
-              <View style={styles.inputView}>
-                <Text style={styles.inputTitle}>E-mail</Text>
-
-                <TextInput
-                  placeholder="Inserisci il tuo indirizzo e-mail"
-                  placeholderTextColor={Colors.silver}
-                  style={styles.input}
-                  onChangeText={(email) => this.setState({ email })}
-                  value={email}
-                />
-              </View>
-
-              <View style={[styles.inputView, { marginTop: 10 }]}>
-                <Text style={styles.inputTitle}>Password</Text>
-
-                <TextInput
-                  placeholder="Inserisci la tua password"
-                  placeholderTextColor={Colors.silver}
-                  style={styles.input}
-                  value={password}
-                  onChangeText={(password) => this.setState({ password })}
-                  secureTextEntry={true}
-                />
-              </View>
-
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('ForgotPassword')}
-                style={styles.forgotPassView}
+              <Formik
+                validationSchema={loginValidationSchema}
+                initialValues={{ email: '', password: '' }}
               >
-                <Text style={{ color: Colors.Teal2 }}>
-                  Hai dimenticato la password?
-                </Text>
-              </TouchableOpacity>
+                {({ handleChange, setFieldValue, values, errors }) => (
+                  <>
+                    {/* {console.warn('dsadas', errors.password)} */}
+                    <View style={styles.inputView}>
+                      <Text style={styles.inputTitle}>E-mail</Text>
+                      <TextInput
+                        placeholder="Inserisci il tuo indirizzo e-mail"
+                        placeholderTextColor={Colors.silver}
+                        style={[
+                          styles.input,
+                          {
+                            borderColor: !values?.email
+                              ? Colors.grey
+                              : errors?.email
+                                ? Colors.red
+                                : Colors.fountain_blue,
+                          },
+                        ]}
+                        onChangeText={(email) => {
+                          handleChange('email');
+                          setFieldValue('email', email);
+                        }}
+                        value={values.email}
+                        keyboardType="email-address"
+                        autoCapitalize="none"
+                      />
+                    </View>
 
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('PrivacyPolicy')}
-                disabled={!email || !password}
-                style={{
-                  width: width * 0.8,
-                  alignSelf: 'center',
-                  backgroundColor:
-                    email && password ? Colors.fountain_blue : Colors.silver,
-                  borderWidth: 1,
-                  borderColor:
-                    email && password ? Colors.fountain_blue : Colors.grey,
-                  borderRadius: 100,
-                  paddingVertical: 15,
-                  marginTop: 15,
-                }}
-              >
-                <Text style={styles.procediText}>Accedi</Text>
-              </TouchableOpacity>
+                    {errors?.email ? (
+                      <View
+                        style={{
+                          width: width * 0.8,
+                          paddingVertical: 15,
+                          alignSelf: 'center',
+                        }}
+                      >
+                        <Text
+                          style={{
+                            fontWeight: 'bold',
+                            fontSize: 12,
+                            color: Colors.red,
+                          }}
+                        >
+                          {errors?.email}
+                        </Text>
+                      </View>
+                    ) : null}
 
-              <View style={styles.footerView}>
-                <Text style={{ fontSize: 16 }}>Non hai un account? </Text>
+                    <View style={[styles.inputView, { marginTop: 10 }]}>
+                      <Text style={styles.inputTitle}>Password</Text>
 
-                <TouchableOpacity>
-                  <Text style={{ color: Colors.fountain_blue, fontSize: 16 }}>
-                    Registrati
-                  </Text>
-                </TouchableOpacity>
-              </View>
+                      <TextInput
+                        placeholder="Inserisci la tua password"
+                        placeholderTextColor={Colors.silver}
+                        style={[
+                          styles.input,
+                          {
+                            borderColor: !values?.password
+                              ? Colors.grey
+                              : errors?.password
+                                ? Colors.red
+                                : Colors.fountain_blue,
+                          },
+                        ]}
+                        value={values.password}
+                        onChangeText={(password) => {
+                          handleChange('password');
+                          setFieldValue('password', password);
+                          // this.onChangePassword(password);
+                        }}
+                        secureTextEntry={true}
+                      />
+                    </View>
+
+                    {errors?.password ? (
+                      <View
+                        style={{
+                          width: width * 0.8,
+                          paddingVertical: 15,
+                          alignSelf: 'center',
+                        }}
+                      >
+                        <Text
+                          style={{
+                            fontWeight: 'bold',
+                            fontSize: 12,
+                            color: Colors.red,
+                          }}
+                        >
+                          {errors?.password}
+                        </Text>
+                      </View>
+                    ) : null}
+
+
+                    <TouchableOpacity
+                      onPress={() => this.props.navigation.navigate('ForgotPassword')}
+                      style={styles.forgotPassView}
+                    >
+                      <Text style={{ color: Colors.Teal2 }}>
+                        Hai dimenticato la password?
+                      </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                      onPress={() => this.props.navigation.navigate('PrivacyPolicy')}
+                      disabled={errors.password && errors.email}
+                      style={[styles.button, {
+                        backgroundColor:
+                          !errors.password &&
+                            !errors.email &&
+                            values.email &&
+                            values.password
+                            ? Colors.fountain_blue
+                            : Colors.silver, borderColor:
+                          !errors.password &&
+                            !errors.email &&
+                            values.email &&
+                            values.password
+                            ? Colors.fountain_blue
+                            : Colors.grey,
+                      }]}
+                    >
+                      <Text style={styles.procediText}>Procedi</Text>
+                    </TouchableOpacity>
+
+                    <View style={styles.footerView}>
+                      <Text style={{ fontSize: 16 }}>Hai già un account? </Text>
+
+                      <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('Register')}
+                      >
+                        <Text
+                          style={{ color: Colors.fountain_blue, fontSize: 16 }}
+                        >
+                          Registrati
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </>
+                )}
+              </Formik>
             </View>
           </ScrollView>
         </View>
@@ -236,6 +329,14 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 15,
   },
+  button: {
+    width: width * 0.8,
+    alignSelf: 'center',
+    borderWidth: 1,
+    borderRadius: 100,
+    paddingVertical: 15,
+    marginTop: 15,
+  }
 });
 
 export default Login;

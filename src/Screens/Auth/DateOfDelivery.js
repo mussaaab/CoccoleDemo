@@ -14,18 +14,23 @@ import { Colors } from '../../Config';
 const { width, height } = Dimensions.get('window');
 
 export class DateOfDelivery extends Component {
+
     render() {
+        let { type } = this.props.route.params;
+
+        console.warn(type);
         return (
             <View style={{ flex: 1, backgroundColor: Colors.white }}>
                 <Header navigation={this.props.navigation} button={true} />
 
-                <View style={styles.progressBarView}>
+                {type !== 'login' ? <View style={styles.progressBarView}>
                     <ProgressBar
                         value={0.25}
                         color={Colors.sky_blue}
                         heartColor={Colors.black}
                     />
-                </View>
+                </View> : null}
+
 
                 <View style={{ flex: 1 }}>
 
@@ -39,11 +44,11 @@ export class DateOfDelivery extends Component {
                             <Text style={styles.text}>Quale informazione vuoi inserire per effettuare il calcolo?</Text>
                         </View>
 
-                        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("LastPeriodDate")}>
+                        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("LastPeriodDate", {type})}>
                             <Text style={styles.btnText}>Data inizio ultima mestruazione</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("ConceptionDate")}>
+                        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate("ConceptionDate", {type})}>
                             <Text style={styles.btnText}>Data concepimento</Text>
                         </TouchableOpacity>
 

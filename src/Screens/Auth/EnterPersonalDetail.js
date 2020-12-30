@@ -113,18 +113,11 @@ export class EnterPersonalDetail extends Component {
                 <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('BestTripPampers')}
                     disabled={!this.state.active}
-                    style={{
-                        width: width * 0.8,
-                        alignSelf: 'center',
+                    style={[styles.button, {
                         backgroundColor: this.state.active
                             ? Colors.fountain_blue
                             : Colors.silver,
-                        borderWidth: 1,
-                        borderColor: Colors.grey,
-                        borderRadius: 100,
-                        paddingVertical: 15,
-                        margin: 10,
-                    }}>
+                    }]}>
                     <Text
                         style={styles.procediText}>
                         Procedi
@@ -174,6 +167,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderRadius: 100,
         paddingLeft: 20,
+        paddingVertical: 10,
         borderWidth: 1,
         borderColor: Colors.grey,
         color: Colors.silver,
@@ -182,6 +176,15 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: Colors.white,
         fontWeight: 'bold',
+    },
+    button: {
+        width: width * 0.8,
+        alignSelf: 'center',
+        borderWidth: 1,
+        borderColor: Colors.grey,
+        borderRadius: 100,
+        paddingVertical: 15,
+        margin: 10,
     }
 })
 

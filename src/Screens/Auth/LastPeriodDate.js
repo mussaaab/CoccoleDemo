@@ -23,18 +23,18 @@ export class LastPeriodDate extends Component {
 
     render() {
         let date = this.state.date?.split('-');
+        let { type } = this.props.route.params;
 
         return (
             <View style={{ flex: 1, backgroundColor: Colors.white }}>
                 <Header navigation={this.props.navigation} button={true} />
-
-                <View style={styles.progressBarView}>
+                {type !== 'login' ? <View style={styles.progressBarView}>
                     <ProgressBar
                         value={0.25}
                         color={Colors.sky_blue}
                         heartColor={Colors.black}
                     />
-                </View>
+                </View> : null}
 
                 <View style={{ flex: 1 }}>
 
@@ -67,21 +67,14 @@ export class LastPeriodDate extends Component {
                 <View style={styles.footerView}>
                     <TouchableOpacity
                         onPress={() =>
-                            this.props.navigation.navigate('ChildbirthDate')
+                            this.props.navigation.navigate('ChildbirthDate', { type })
                         }
                         disabled={!this.state.date}
-                        style={{
-                            width: width * 0.8,
-                            alignSelf: 'center',
+                        style={[styles.button, {
                             backgroundColor: this.state.date
                                 ? Colors.fountain_blue
                                 : Colors.silver,
-                            borderWidth: 1,
-                            borderColor: Colors.grey,
-                            borderRadius: 100,
-                            paddingVertical: 15,
-                            margin: 15,
-                        }}>
+                        }]}>
 
                         <Text style={styles.procediText}> Procedi </Text>
                     </TouchableOpacity>
@@ -215,6 +208,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(232, 232, 232,0.7)',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    button: {
+        width: width * 0.8,
+        alignSelf: 'center',
+        borderWidth: 1,
+        borderColor: Colors.grey,
+        borderRadius: 100,
+        paddingVertical: 15,
+        margin: 15,
     }
 })
 

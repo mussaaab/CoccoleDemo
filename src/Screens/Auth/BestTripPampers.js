@@ -73,21 +73,14 @@ export class BestTripPampers extends Component {
                   active: false,
                 })
               }
-              style={{
-                width: height * 0.18,
-                height: height * 0.07,
-                alignItems: 'center',
-                padding: 5,
-                borderWidth: 1,
+              style={[styles.button, {
                 borderColor: this.state.not_accept
                   ? Colors.fountain_blue
                   : Colors.grey,
-                borderRadius: 100,
                 backgroundColor: this.state.not_accept
                   ? Colors.sky_blue
                   : Colors.white,
-                flexDirection: 'row',
-              }}
+              }]}
             >
               <RadioButton
                 value={this.state.not_accept}
@@ -115,21 +108,14 @@ export class BestTripPampers extends Component {
 
             <TouchableOpacity
               onPress={() => this.setState({ accept: true, not_accept: false })}
-              style={{
-                width: height * 0.18,
-                height: height * 0.07,
-                alignItems: 'center',
-                padding: 5,
-                borderWidth: 1,
-                borderColor: this.state.accept
+              style={[styles.button, {
+                borderColor: this.state.not_accept
                   ? Colors.fountain_blue
                   : Colors.grey,
-                borderRadius: 100,
-                backgroundColor: this.state.accept
+                backgroundColor: this.state.not_accept
                   ? Colors.sky_blue
                   : Colors.white,
-                flexDirection: 'row',
-              }}
+              }]}
             >
               <RadioButton
                 value={this.state.accept}
@@ -180,21 +166,14 @@ export class BestTripPampers extends Component {
                   active: false,
                 });
               }}
-              style={{
-                width: height * 0.18,
-                height: height * 0.07,
-                alignItems: 'center',
-                padding: 5,
-                borderWidth: 1,
+              style={[styles.button, {
                 borderColor: this.state.not_accept2
                   ? Colors.fountain_blue
                   : Colors.grey,
-                borderRadius: 100,
                 backgroundColor: this.state.not_accept2
                   ? Colors.sky_blue
                   : Colors.white,
-                flexDirection: 'row',
-              }}
+              }]}
             >
               <RadioButton
                 value={this.state.not_accept2}
@@ -228,21 +207,14 @@ export class BestTripPampers extends Component {
                   active: true,
                 });
               }}
-              style={{
-                width: height * 0.18,
-                height: height * 0.07,
-                alignItems: 'center',
-                padding: 5,
-                borderWidth: 1,
+              style={[styles.button, {
                 borderColor: this.state.accept2
                   ? Colors.fountain_blue
                   : Colors.grey,
-                borderRadius: 100,
                 backgroundColor: this.state.accept2
                   ? Colors.sky_blue
                   : Colors.white,
-                flexDirection: 'row',
-              }}
+              }]}
             >
               <RadioButton
                 value={this.state.accept2}
@@ -330,6 +302,15 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontWeight: 'bold',
   },
+  button: {
+    width: height * 0.18,
+    height: height * 0.07,
+    alignItems: 'center',
+    padding: 5,
+    borderWidth: 1,
+    borderRadius: 100,
+    flexDirection: 'row',
+  }
 });
 
 export default BestTripPampers;

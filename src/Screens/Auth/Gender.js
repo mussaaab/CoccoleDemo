@@ -46,7 +46,9 @@ class Gender extends Component {
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity onPress={() => this.props.navigation.navigate("DiaryReady")}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("DiaryReady")}
+          >
             <Text style={{ textAlign: 'center', color: Colors.Teal2 }}>
               Non lo so ancora
             </Text>

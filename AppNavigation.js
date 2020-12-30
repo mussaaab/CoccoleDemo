@@ -30,7 +30,8 @@ import {
   CustomizeExperience,
   StartDiary,
   WelcomeSwiper,
-  NewCollectionPoint
+  NewCollectionPoint,
+  LoyalityDiary
 } from './src/Screens';
 
 const AuthStack = createStackNavigator();
@@ -176,6 +177,11 @@ const Auth = () => {
       <AuthStack.Screen
         name="NewCollectionPoint"
         component={NewCollectionPoint}
+        options={{ headerShown: false }}
+      />
+      <AuthStack.Screen
+        name="LoyalityDiary"
+        component={LoyalityDiary}
         options={{ headerShown: false }}
       />
     </AuthStack.Navigator>
