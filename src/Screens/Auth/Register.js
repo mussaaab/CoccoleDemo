@@ -9,90 +9,76 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import { Images, Colors } from '../../Config';
+import { Formik } from 'formik';
+import {
+  Images,
+  Colors,
+  emailRegex,
+  loginValidationSchema,
+} from '../../Config';
 import { Header } from '../../Components';
+
+// Icons
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 const { width, height } = Dimensions.get('window');
 
 export class Register extends Component {
   state = {
-    email: '',
-    password: '',
-    isValidEmail: '',
-    isValidPassword: '',
-    active: false
+    passwordValid: false,
+    match: false,
+    capital: false,
+    number: false,
+    length: false,
   };
 
   Login = () => {
-    let { email, password, } = this.state;
-    console.warn("sdda");
-
+    let { email, password } = this.state;
     if (email && password) {
-      this.props.navigation.navigate('SelectDateOfBirth')
+      this.props.navigation.navigate('SelectDateOfBirth');
     }
-  }
+  };
 
-  onEndEmail = () => {
-    let { email } = this.state;
-    const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
-
-    if (!email.match(emailRegex)) {
-      this.setState({
-        isValidEmail: "invalid",
-
-      })
+  onChangePassword = (password) => {
+    if (password.length >= 8) {
+      this.setState({ length: true });
     } else {
-      this.setState({
-        isValidEmail: true,
-      })
+      this.setState({ length: false });
     }
-  }
-
-  onEndPassword = () => {
-    let { password, isValidEmail } = this.state;
-
-    if (password.length < 6) {
+    if (password.match(/[A-Z]/g)) {
       this.setState({
-        isValidPassword: "invalid",
-        active: false
-      })
+        capital: true,
+      });
     } else {
-      this.setState({
-        isValidPassword: true,
-        active: true
-      })
+      this.setState({ capital: false });
     }
-  }
+    if (password.match(/[1-9]/g)) {
+      this.setState({
+        number: true,
+      });
+    } else {
+      this.setState({ number: false });
+    }
+  };
 
   render() {
-    let { email, password, isValidEmail, isValidPassword, active } = this.state;
+    let { capital, number, length } = this.state;
 
     return (
       <View style={{ flex: 1, backgroundColor: Colors.Teal2 }}>
-
         <View style={{ flex: 1, alignItems: 'center' }}>
-
           <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
             <Header navigation={this.props.navigation} button={true} />
 
-            <View
-              style={styles.bodyView}>
-
-              <Text
-                style={styles.title}>
-                Registrati aI Club Pampers
-              </Text>
+            <View style={styles.bodyView}>
+              <Text style={styles.title}>Registrati aI Club Pampers</Text>
 
               <Text style={{ textAlign: 'center', paddingTop: 10 }}>
                 Usa i tuoi social
               </Text>
 
-              <View
-                style={styles.socialButtonsView}>
-
-                <View
-                  style={styles.socialBtnView}>
-
+              <View style={styles.socialButtonsView}>
+                <View style={styles.socialBtnView}>
                   <TouchableOpacity>
                     <Image
                       source={Images.apple_icon}
@@ -104,10 +90,7 @@ export class Register extends Component {
                 </View>
 
                 <View style={{ flex: 1 }}>
-
-                  <View
-                    style={styles.socialBtnView}>
-
+                  <View style={styles.socialBtnView}>
                     <TouchableOpacity>
                       <Image
                         source={Images.facebook_icon}
@@ -120,10 +103,7 @@ export class Register extends Component {
                 </View>
 
                 <View style={{ flex: 1 }}>
-
-                  <View
-                    style={styles.socialBtnView}>
-
+                  <View style={styles.socialBtnView}>
                     <TouchableOpacity>
                       <Image
                         source={Images.google_icon}
@@ -133,12 +113,10 @@ export class Register extends Component {
 
                     <Text style={{ fontWeight: 'bold' }}>Google</Text>
                   </View>
-
                 </View>
               </View>
 
               <View style={styles.oppureView}>
-
                 <View style={styles.bottomLineView} />
 
                 <View style={{ marginHorizontal: 5 }}>
@@ -148,85 +126,218 @@ export class Register extends Component {
                 <View style={styles.bottomLineView} />
               </View>
 
-              <View style={styles.inputView}>
-
-                <Text
-                  style={styles.inputTitle}>
-                  E-mail
-                </Text>
-
-                <TextInput
-                  placeholder="Inserisci il tuo indirizzo e-mail"
-                  placeholderTextColor={Colors.silver}
-                  style={[styles.input, { borderColor: isValidEmail == 'invalid' ? Colors.red : isValidEmail == true ? Colors.fountain_blue : Colors.grey }]}
-                  onChangeText={(email) => this.setState({ email })}
-                  onEndEditing={this.onEndEmail}
-                  value={email}
-                  keyboardType="email-address"
-                  autoCapitalize="none"
-                />
-              </View>
-
-              {isValidEmail == "invalid" ? <View style={{ width: width * 0.8, paddingVertical: 15, alignSelf: 'center' }}><Text style={{ fontWeight: 'bold', fontSize: 12, color: Colors.red }}>Inserisci un indirizzo e-mail valido</Text></View> : null}
-
-              <View style={[styles.inputView, { marginTop: 10 }]}>
-
-                <Text
-                  style={styles.inputTitle}>
-                  Password
-                </Text>
-
-                <TextInput
-                  placeholder="Inserisci la tua password"
-                  placeholderTextColor={Colors.silver}
-                  style={[styles.input, { borderColor: isValidPassword == 'invalid' ? Colors.red : isValidPassword == true ? Colors.fountain_blue : Colors.grey  }]}
-                  value={password}
-                  onChangeText={(password) => this.setState({ password })}
-                  secureTextEntry={true}
-                  onEndEditing={this.onEndPassword}
-                />
-              </View>
-
-              {isValidPassword == "invalid" ? <View style={{ width: width * 0.8, paddingVertical: 15, alignSelf: 'center' }}><Text style={{ fontWeight: 'bold', fontSize: 12, color: Colors.red }}>Messaggio errore</Text></View> : null}
-
-
-
-
-              <TouchableOpacity
-                onPress={this.Login}
-                disabled={!active && !isValidEmail}
-                style={{
-                  width: width * 0.8,
-                  alignSelf: 'center',
-                  backgroundColor:
-                    active ? Colors.fountain_blue : Colors.silver,
-                  borderWidth: 1,
-                  borderColor:
-                    active ? Colors.fountain_blue : Colors.grey,
-                  borderRadius: 100,
-                  paddingVertical: 15,
-                  marginTop: 15,
-                }}
+              <Formik
+                validationSchema={loginValidationSchema}
+                initialValues={{ email: '', password: '' }}
+                // onSubmit={(values) => console.log("dsadadada=====",values)}
+                // validateOnChange={(val) => console.warn("sdsda",val)}
               >
-                <Text style={styles.procediText}>
-                  Procedi
-                </Text>
+                {({ handleChange, setFieldValue, values, errors }) => (
+                  <>
+                    {/* {console.warn('dsadas', errors.password)} */}
+                    <View style={styles.inputView}>
+                      <Text style={styles.inputTitle}>E-mail</Text>
+                      <TextInput
+                        placeholder="Inserisci il tuo indirizzo e-mail"
+                        placeholderTextColor={Colors.silver}
+                        style={[
+                          styles.input,
+                          {
+                            borderColor: !values?.email
+                              ? Colors.grey
+                              : errors?.email
+                              ? Colors.red
+                              : Colors.fountain_blue,
+                          },
+                        ]}
+                        onChangeText={(email) => {
+                          handleChange('email');
+                          setFieldValue('email', email);
+                        }}
+                        value={values.email}
+                        keyboardType="email-address"
+                        autoCapitalize="none"
+                      />
+                    </View>
 
-              </TouchableOpacity>
+                    {errors?.email ? (
+                      <View
+                        style={{
+                          width: width * 0.8,
+                          paddingVertical: 15,
+                          alignSelf: 'center',
+                        }}
+                      >
+                        <Text
+                          style={{
+                            fontWeight: 'bold',
+                            fontSize: 12,
+                            color: Colors.red,
+                          }}
+                        >
+                          {errors?.email}
+                        </Text>
+                      </View>
+                    ) : null}
 
-              <View style={styles.footerView}>
+                    <View style={[styles.inputView, { marginTop: 10 }]}>
+                      <Text style={styles.inputTitle}>Password</Text>
 
-                <Text style={{ fontSize: 16 }}>Hai già un account?  </Text>
+                      <TextInput
+                        placeholder="Inserisci la tua password"
+                        placeholderTextColor={Colors.silver}
+                        style={[
+                          styles.input,
+                          {
+                            borderColor: !values?.password
+                              ? Colors.grey
+                              : errors?.password
+                              ? Colors.red
+                              : Colors.fountain_blue,
+                          },
+                        ]}
+                        value={values.password}
+                        onChangeText={(password) => {
+                          handleChange('password');
+                          setFieldValue('password', password);
+                          this.onChangePassword(password);
+                        }}
+                        secureTextEntry={true}
+                      />
+                    </View>
 
-                <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
+                    {errors?.password ? (
+                      <View
+                        style={{
+                          width: width * 0.8,
+                          paddingVertical: 15,
+                          alignSelf: 'center',
+                        }}
+                      >
+                        <Text
+                          style={{
+                            fontWeight: 'bold',
+                            fontSize: 12,
+                            color: Colors.red,
+                          }}
+                        >
+                          {errors?.password}
+                        </Text>
+                      </View>
+                    ) : null}
 
-                  <Text style={{ color: Colors.fountain_blue, fontSize: 16, }}>
-                    Accedi
-                  </Text>
+                    {errors.password ? (
+                      <View
+                        style={{
+                          height: height * 0.15,
+                          width: width * 0.7,
+                          alignSelf: 'center',
+                          paddingTop: 10,
+                          // backgroundColor: 'red',
+                        }}
+                      >
+                        <View
+                          style={{ flexDirection: 'row', paddingVertical: 3 }}
+                        >
+                          <EvilIcons
+                            name={!capital ? 'close-o' : 'check'}
+                            color={!capital ? Colors.red : Colors.Teal2}
+                            size={26}
+                          />
 
-                </TouchableOpacity>
+                          <Text
+                            style={{
+                              color: !capital ? Colors.red : Colors.Teal2,
+                              paddingLeft: 8,
+                            }}
+                          >
+                            Almeno 1 lettera maiuscola
+                          </Text>
+                        </View>
+                        <View
+                          style={{ flexDirection: 'row', paddingVertical: 3 }}
+                        >
+                          <EvilIcons
+                            name={!number ? 'close-o' : 'check'}
+                            color={!number ? Colors.red : Colors.Teal2}
+                            size={26}
+                          />
 
-              </View>
+                          <Text
+                            style={{
+                              color: !number ? Colors.red : Colors.Teal2,
+                              paddingLeft: 8,
+                            }}
+                          >
+                            Almeno 1 numero
+                          </Text>
+                        </View>
+                        <View
+                          style={{ flexDirection: 'row', paddingVertical: 3 }}
+                        >
+                          <EvilIcons
+                            name={!length ? 'close-o' : 'check'}
+                            color={!length ? Colors.red : Colors.Teal2}
+                            size={26}
+                          />
+
+                          <Text
+                            style={{
+                              color: !length ? Colors.red : Colors.Teal2,
+                              paddingLeft: 8,
+                            }}
+                          >
+                            Almeno 8 caratteri
+                          </Text>
+                        </View>
+                      </View>
+                    ) : null}
+
+                    <TouchableOpacity
+                      onPress={this.Login}
+                      disabled={errors.password && errors.email}
+                      style={{
+                        width: width * 0.8,
+                        alignSelf: 'center',
+                        backgroundColor:
+                          !errors.password &&
+                          !errors.email &&
+                          values.email &&
+                          values.password
+                            ? Colors.fountain_blue
+                            : Colors.silver,
+                        borderWidth: 1,
+                        borderColor:
+                          !errors.password &&
+                          !errors.email &&
+                          values.email &&
+                          values.password
+                            ? Colors.fountain_blue
+                            : Colors.grey,
+                        borderRadius: 100,
+                        paddingVertical: 15,
+                        marginTop: 15,
+                      }}
+                    >
+                      <Text style={styles.procediText}>Procedi</Text>
+                    </TouchableOpacity>
+
+                    <View style={styles.footerView}>
+                      <Text style={{ fontSize: 16 }}>Hai già un account? </Text>
+
+                      <TouchableOpacity
+                        onPress={() => this.props.navigation.navigate('Login')}
+                      >
+                        <Text
+                          style={{ color: Colors.fountain_blue, fontSize: 16 }}
+                        >
+                          Accedi
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </>
+                )}
+              </Formik>
             </View>
           </ScrollView>
         </View>
@@ -248,7 +359,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#354953'
+    color: '#354953',
   },
   socialButtonsView: {
     height: height * 0.12,
@@ -286,7 +397,7 @@ const styles = StyleSheet.create({
   inputTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#354953'
+    color: '#354953',
   },
   input: {
     width: width * 0.8,
@@ -296,7 +407,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     borderWidth: 1,
     color: Colors.silver,
-    paddingVertical: 10
+    paddingVertical: 10,
   },
   procediText: {
     textAlign: 'center',
@@ -308,8 +419,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     flex: 1,
-    paddingVertical: 15
-  }
-})
+    paddingVertical: 15,
+  },
+});
 
 export default Register;
