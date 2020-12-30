@@ -85,7 +85,7 @@ class NewCollectionPoint extends Component {
 
           <View style={styles.btnView}>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate()}
+              // onPress={() => this.props.navigation.navigate()}
               style={styles.button}
             >
               <Text style={styles.btnText}>Continua</Text>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -6,23 +6,19 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-
 } from 'react-native';
+
 import { Colors, Images } from '../Config';
 
 const { width, height } = Dimensions.get('window');
 
 export const GrowthDiary = ({ navigation }) => {
 
-  // const [isLogin, setIsLogin] = useState(false)
 
-  // Next = () => {
 
-  //   if (!isLogin) {
-  //     setIsLogin(isLogin = true)
-  //     console.warn(isLogin)
-  //   }
-  // }
+  Next = () => {
+
+  }
 
   return (
     <View style={{ flex: 1 }}>

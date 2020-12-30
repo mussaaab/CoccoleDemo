@@ -30,7 +30,7 @@ export class Login extends Component {
             <Header navigation={this.props.navigation} button={true} />
 
             <View style={styles.bodyView}>
-              <Text style={styles.title}>Registrati aI Club Pampers</Text>
+              <Text style={styles.title}>Accedi al Club Pampers</Text>
 
               <Text style={{ textAlign: 'center', paddingTop: 10 }}>
                 Usa i tuoi social

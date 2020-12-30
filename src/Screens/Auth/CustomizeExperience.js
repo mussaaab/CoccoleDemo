@@ -31,7 +31,7 @@ export class CustomizeExperience extends Component {
                         <View style={styles.btnView}>
                             <TouchableOpacity
                                 style={styles.button}
-                                onPress={() => this.props.navigation.navigate('')}
+                                // onPress={() => this.props.navigation.navigate('')}
                             >
                                 <Text style={styles.btnText}>No</Text>
                             </TouchableOpacity>
