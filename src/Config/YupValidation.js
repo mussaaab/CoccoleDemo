@@ -5,7 +5,7 @@ export const loginValidationSchema = yup.object().shape({
   password: yup
     .string()
     .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/,
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
       'message error',
     ),
 });
